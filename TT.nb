@@ -1,0 +1,2779 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    133579,       2771]
+NotebookOptionsPosition[    126874,       2645]
+NotebookOutlinePosition[    127270,       2661]
+CellTagsIndexPosition[    127227,       2658]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Thucydides", "'"}], " ", "Trap", " ", "Mathematica", " ", 
+    "Notebook"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Source", ":", " ", 
+     RowBox[{
+     "Belfer", " ", "Center", " ", "for", " ", "Science", " ", "and", " ", 
+      "International", " ", "Affairs"}]}], ",", " ", 
+    RowBox[{"Harvard", " ", "University"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Author", ":", " ", 
+    RowBox[{"Soumadeep", " ", "Ghosh"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.8859487187450266`*^9, 3.885948759955504*^9}, {
+  3.885948808276958*^9, 3.8859488367705507`*^9}, {3.8859488669052887`*^9, 
+  3.885948895160139*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"6667177e-3fdb-42d0-bb2f-5d25c9208a84"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 15th century\>\"", ",", "\"\<Portugal\>\"", ",", 
+        "\"\<Spain\>\"", ",", "\"\<Global empire and trade\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<No War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<First half of 16th century\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Hapsburgs\>\"", ",", "\"\<Land power in western Europe\>\""}], 
+       "}"}], "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<16 and 17 centuries\>\"", ",", "\"\<Hapsburgs\>\"", ",", 
+        "\"\<Ottoman Empire\>\"", ",", 
+        "\"\<Land power in central and eastern Europe, sea power in the \
+Mediterranean\>\""}], "}"}], "\[Rule]", " ", "\"\<War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<First half of 17 century\>\"", ",", "\"\<Hapsburgs\>\"", ",", 
+        "\"\<Sweden\>\"", ",", 
+        "\"\<Land and sea power in northern Europe\>\""}], "}"}], "\[Rule]", 
+      " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-to-late 17 century\>\"", ",", "\"\<Dutch Republic\>\"", ",", 
+        "\"\<England\>\"", ",", 
+        "\"\<Global empire, sea power, and trade\>\""}], "}"}], "\[Rule]", 
+      " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 17 to mid-18th centuries\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Great Britain\>\"", ",", 
+        "\"\<Global empire and European land power\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 18th and early 19th centuries\>\"", ",", 
+        "\"\<United Kingdom\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Land and sea power in Europe\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-19th century\>\"", ",", "\"\<France and United Kingdom\>\"", 
+        ",", "\"\<Russia\>\"", ",", 
+        "\"\<Global empire, influence in Central Asia and eastern \
+Mediterranean\>\""}], "}"}], "\[Rule]", "\"\<War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-19th century\>\"", ",", "\"\<France\>\"", ",", 
+        "\"\<Germany\>\"", ",", "\"\<Land power in Europe\>\""}], "}"}], 
+      "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Late 19 and early 20 centuries\>\"", ",", 
+        "\"\<China and Russia\>\"", ",", "\"\<Japan\>\"", ",", 
+        "\"\<Land and sea power in East Asia\>\""}], "}"}], "\[Rule]", 
+      "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Early 20th century\>\"", ",", "\"\<United Kingdom\>\"", ",", 
+        "\"\<United States\>\"", ",", 
+        "\"\<Global economic dominance and naval supremacy in the Western \
+Hemisphere\>\""}], "}"}], "\[Rule]", "\"\<No War\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Early 20th century\>\"", ",", 
+        "\"\<United Kingdom supported by France, Russia\>\"", ",", 
+        "\"\<Germany\>\"", ",", 
+        "\"\<Land power in Europe and global sea power\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-20th century\>\"", ",", "\"\<Soviet Union, France, UK\>\"", 
+        ",", "\"\<Germany\>\"", ",", "\"\<Land and sea power in Europe\>\""}],
+        "}"}], "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Mid-20th century\>\"", ",", "\"\<United States\>\"", ",", 
+        "\"\<Japan\>\"", ",", 
+        "\"\<Sea power and influence in the Asia-Pacific region\>\""}], "}"}],
+       "\[Rule]", "\"\<War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<1940s-1980s\>\"", ",", "\"\<United States\>\"", ",", 
+        "\"\<Soviet Union\>\"", ",", "\"\<Global power\>\""}], "}"}], 
+      "\[Rule]", " ", "\"\<No War\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<1990s-present\>\"", ",", "\"\<United Kingdom and France\>\"", 
+        ",", "\"\<Germany\>\"", ",", 
+        "\"\<Political influence in Europe\>\""}], "}"}], "\[Rule]", 
+      "\"\<No War\>\""}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"Classify", "[", "data", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Information", "[", "c", "]"}]}], "Input",
+ CellChangeTimes->{{3.850717681793174*^9, 3.8507178613314896`*^9}, {
+   3.8507180795330725`*^9, 3.850718265126598*^9}, 3.850718378199997*^9, {
+   3.850718548208296*^9, 3.8507185836047573`*^9}, {3.850719737841711*^9, 
+   3.8507198357474833`*^9}, {3.850719866510737*^9, 3.8507198666511374`*^9}, {
+   3.850719904262803*^9, 3.8507199060724063`*^9}, {3.8507199950081625`*^9, 
+   3.850720008236986*^9}, {3.8552075563233385`*^9, 3.855207562010641*^9}, {
+   3.8552086173421836`*^9, 3.8552086399507885`*^9}, {3.8678891733000655`*^9, 
+   3.8678891747375145`*^9}, 3.8859487126052403`*^9, 3.8859487625875225`*^9, {
+   3.9469095085157375`*^9, 3.9469095224835167`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"01387ae7-6a34-441e-b422-327ae10a0cc7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   StyleBox[
+    FrameBox[GridBox[{
+       {
+        ItemBox[
+         FrameBox[
+          StyleBox["\<\"Classifier information\"\>", "SuggestionsBarText",
+           StripOnInput->False,
+           FontSize->12],
+          FrameMargins->{{10, 5}, {-4, 2}},
+          FrameStyle->None,
+          StripOnInput->False],
+         Alignment->{Left, Bottom},
+         Background->RGBColor[0.96, 0.96, 0.96],
+         Frame->{{False, False}, {True, False}},
+         FrameStyle->Opacity[0.1],
+         ItemSize->{Automatic, 1},
+         StripOnInput->False]},
+       {
+        ItemBox[
+         TagBox[
+          FrameBox[
+           TagBox[GridBox[{
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Data type"], 
+                   TextCell["Data type"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TagBox[
+                TooltipBox[
+                 TemplateBox[{
+                   InterpretationBox[
+                    Cell["Mixed"], 
+                    TextCell["Mixed"]], 
+                   StyleBox[
+                    
+                    TemplateBox[{"\" (number: \"", "4", "\")\""}, 
+                    "RowDefault"], 
+                    GrayLevel[0.5], StripOnInput -> False]},
+                  "RowDefault"],
+                 TagBox[
+                  RowBox[{"{", 
+                    
+                    RowBox[{
+                    "\"Text\"", ",", "\"Text\"", ",", "\"Text\"", ",", 
+                    "\"Text\""}], "}"}], Short[#, 10]& ]],
+                Annotation[#, 
+                 Short[{"Text", "Text", "Text", "Text"}, 10], "Tooltip"]& ]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Classes"], 
+                   TextCell["Classes"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{",", "\",\"", 
+                 InterpretationBox[
+                  Cell["No War"], 
+                  TextCell["No War"]], 
+                 InterpretationBox[
+                  Cell["War"], 
+                  TextCell["War"]]},
+                "RowWithSeparators"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Accuracy"], 
+                   TextCell["Accuracy"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{
+                 RowBox[{"(", 
+                   InterpretationBox[
+                    
+                    TemplateBox[{"89.", "12."}, "Around", SyntaxForm -> 
+                    PlusMinus], 
+                    Around[
+                    88.846515030057659601`3., 11.7909823320310778172`3.]], 
+                   ")"}], "\"%\"", "percent", "\"Percent\""},
+                "QuantityPostfix"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Method"], 
+                   TextCell["Method"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TagBox[
+                TooltipBox[
+                 
+                 InterpretationBox[Cell[
+                  "LogisticRegression",ExpressionUUID->
+                   "c52b48b6-2c3e-4201-80e9-0c0c8f28130c"],
+                  TextCell["LogisticRegression"]],
+                 StyleBox[
+                  TagBox[
+                   
+                   GridBox[{{"\"L1Regularization\"", "0"}, {
+                    "\"L2Regularization\"", "0.00001`"}, {
+                    "\"OptimizationMethod\"", "\"LBFGS\""}}, 
+                    GridBoxAlignment -> {"Columns" -> {{Left}}}, AutoDelete -> 
+                    False, GridBoxBackground -> {"Columns" -> {{
+                    GrayLevel[0.95], 
+                    Opacity[0.8, 
+                    GrayLevel[1]]}}, "Rows" -> {{None}}}, 
+                    GridBoxFrame -> {
+                    "Columns" -> {{True}}, "Rows" -> {{True}}}, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{1}}}, 
+                    FrameStyle -> GrayLevel[0.84]], "Grid"], FontFamily -> 
+                  "Verdana", StripOnInput -> False]],
+                Annotation[#, 
+                 Style[
+                  
+                  Grid[{{"L1Regularization", 0}, {
+                    "L2Regularization", 0.00001}, {
+                    "OptimizationMethod", "LBFGS"}}, Alignment -> Left, Frame -> 
+                   All, FrameStyle -> GrayLevel[0.84], Spacings -> {1, 1}, 
+                   Background -> {{{
+                    GrayLevel[0.95], 
+                    Opacity[0.8, 
+                    GrayLevel[1]]}}, None}], FontFamily -> "Verdana"], 
+                 "Tooltip"]& ]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Single evaluation time"], 
+                   TextCell["Single evaluation time"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{"10.6`", 
+                 
+                 RowBox[{
+                  "\"ms\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]",
+                    "\"example\""}], "milliseconds per example", 
+                 FractionBox["\"Milliseconds\"", "\"Examples\""]},
+                "Quantity"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Batch evaluation speed"], 
+                   TextCell["Batch evaluation speed"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{"2.54`", 
+                 
+                 RowBox[{
+                  "\"examples\"", "\[InvisibleSpace]", "\"/\"", 
+                   "\[InvisibleSpace]", "\"ms\""}], 
+                 "examples per millisecond", 
+                 FractionBox["\"Examples\"", "\"Milliseconds\""]},
+                "Quantity"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  TagBox[
+                   TooltipBox[
+                    InterpretationBox[
+                    Cell["Loss"], 
+                    TextCell["Loss"]], "\"Mean cross entropy\"", TooltipStyle -> 
+                    "TextStyling"], 
+                   Annotation[#, "Mean cross entropy", "Tooltip"]& ], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TagBox[
+                TooltipBox[
+                 TemplateBox[{"0.1644884622141730701`3.", 
+                   StyleBox[
+                    
+                    TemplateBox[{
+                    "\" \[PlusMinus] \"", "0.1097428386027667485`2."}, 
+                    "RowDefault"], {10, 
+                    Opacity[0.5]}, StripOnInput -> False]},
+                  "RowDefault"],
+                 TemplateBox[{"\"95% confidence interval: [\"", 
+                   RowBox[{"-", "0.0549972149913604269`3."}], "\", \"", 
+                   "0.3839741394197065949`3.", "\"]\""}, "RowDefault"],
+                 TooltipStyle->{}],
+                Annotation[#, 
+                 
+                 Row[{"95% confidence interval: [", -0.0549972149913604269`3.,
+                    ", ", 0.3839741394197065949`3., "]"}], "Tooltip"]& ]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Model memory"], 
+                   TextCell["Model memory"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{"347.`", "\"kB\"", "kilobytes", "\"Kilobytes\""},
+                "Quantity"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Training examples used"], 
+                   TextCell["Training examples used"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{"16", "\"examples\"", "examples", "\"Examples\""},
+                "Quantity"]},
+              {
+               TemplateBox[{
+                 TemplateBox[{5}, "Spacer1"], 
+                 StyleBox[
+                  InterpretationBox[
+                   Cell["Training time"], 
+                   TextCell["Training time"]], 
+                  GrayLevel[0.4], StripOnInput -> False]},
+                "RowDefault"], 
+               TemplateBox[{"5.05`", "\"s\"", "seconds", "\"Seconds\""},
+                "Quantity"]}
+             },
+             AutoDelete->False,
+             ColumnsEqual->False,
+             
+             GridBoxAlignment->{
+              "Columns" -> {Right, {Left}}, "Rows" -> {{Baseline}}},
+             GridBoxDividers->{"Columns" -> {False, {
+                  Opacity[0.15]}, False}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {Automatic, {Automatic}}, "Rows" -> {{1.}}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], 
+                 Offset[1.1199999999999999`], {
+                  Offset[1.75]}, 
+                 Offset[0.27999999999999997`]}, "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.8]}, 
+                 Offset[0.2]}}],
+            "Grid"],
+           FrameMargins->{{10, 10}, {10, 5}},
+           FrameStyle->None,
+           StripOnInput->False],
+          Deploy,
+          DefaultBaseStyle->"Deploy"],
+         Alignment->Center,
+         BaseStyle->{
+          FontWeight -> "Light", FontSize -> 11, FontFamily -> "Segoe UI", 
+           NumberMarks -> False, Deployed -> False},
+         StripOnInput->False]}
+      },
+      DefaultBaseStyle->"Column",
+      GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+      GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.5599999999999999]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], 
+          Offset[0.8], {
+           Offset[0.4]}, 
+          Offset[0.2]}}],
+     Background->GrayLevel[1],
+     FrameMargins->{{0, 0}, {0, 0}},
+     FrameStyle->GrayLevel[0.85],
+     RoundingRadius->5,
+     StripOnInput->False],
+    StripOnInput->False,
+    LineBreakWithin->False],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  MachineLearning`MLInformationObject[
+   ClassifierFunction[<|
+    "ExampleNumber" -> 16, "ClassNumber" -> 2, 
+     "Input" -> <|
+      "Preprocessor" -> 
+       MachineLearning`MLProcessor[
+        "ToMLDataset", <|
+         "Input" -> <|
+           "f1" -> <|"Type" -> "Text"|>, "f2" -> <|"Type" -> "Text"|>, 
+            "f3" -> <|"Type" -> "Text"|>, "f4" -> <|"Type" -> "Text"|>|>, 
+          "Output" -> <|
+           "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, "Preprocessor" -> 
+          MachineLearning`MLProcessor["Sequence", <|"Processors" -> {
+               MachineLearning`MLProcessor[
+               "Transpose", <|"FeatureNumber" -> 4|>], 
+               MachineLearning`MLProcessor[
+               "WrapMLDataset", <|
+                "FeatureTypes" -> {"Text", "Text", "Text", "Text"}, 
+                 "FeatureKeys" -> {"f1", "f2", "f3", "f4"}, "FeatureWeights" -> 
+                 Automatic, "ExampleWeights" -> Automatic, "RawExample" -> 
+                 Missing["KeyAbsent", "RawExample"], "StructurePreserving" -> 
+                 False|>]}|>], "ScalarFeature" -> False, "Invertibility" -> 
+          "Perfect", "StructurePreserving" -> False, "Missing" -> 
+          "Allowed"|>], "Processor" -> 
+       MachineLearning`MLProcessor[
+        "Sequence", <|
+         "Input" -> <|
+           "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+            "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+          "Output" -> <|"(f1f2f3f4)" -> <|"Weight" -> CompressedData["
+1:eJxTTMoPSmVkYGBIAOJqkXXuD6uW2A91WuZ4IRCtGTR0iiJ35AmnZUOOFgSD
+hSOGBgDkjQf+
+               "], "Type" -> "NumericalVector"|>|>, "Processors" -> {
+            MachineLearning`MLProcessor[
+            "SynthesizeMissingValues", <|
+             "Invertibility" -> "Perfect", "Missing" -> "Imputed", 
+              "StructurePreserving" -> True, 
+              "Input" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, "Distribution" -> 
+              LearnedDistribution[<|
+                "ExampleNumber" -> 16, "Preprocessor" -> 
+                 MachineLearning`MLProcessor[
+                  "ToMLDataset", <|
+                   "Input" -> <|
+                    "f1" -> <|"Type" -> "Text"|>, 
+                    "f2" -> <|"Type" -> "Text"|>, 
+                    "f3" -> <|"Type" -> "Text"|>, 
+                    "f4" -> <|"Type" -> "Text"|>|>, 
+                    "Output" -> <|
+                    "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Preprocessor" -> MachineLearning`MLProcessor["Identity"],
+                     "ScalarFeature" -> False, "Invertibility" -> "Perfect", 
+                    "StructurePreserving" -> False, "Missing" -> "Allowed"|>],
+                  "Processor" -> 
+                 MachineLearning`MLProcessor[
+                  "Sequence", <|
+                   "Input" -> <|
+                    "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, 
+                    "Processors" -> {
+                    MachineLearning`MLProcessor[
+                    "FeatureChangeType", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                    "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Output" -> <|
+                    "f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f2" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f3" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f4" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+                    "Version" -> {13.3, 1}, "ID" -> 280068449551896583|>], 
+                    MachineLearning`MLProcessor[
+                    "ToVector", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f2" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f3" -> <|"Type" -> "Nominal", "Weight" -> 1|>, 
+                    "f4" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NominalVector", "Weight" -> 4|>|>, 
+                    "Version" -> {13.3, 1}, "ID" -> 1097745686849335013|>], 
+                    MachineLearning`MLProcessor[
+                    "IntegerEncodeNominalVector", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NominalVector", "Weight" -> 4|>|>, 
+                    "Index" -> {<|"" -> 1|>, <|"" -> 1|>, <|"" -> 1|>, <|
+                    "" -> 1|>}, "MissingCode" -> Indeterminate, 
+                    "Version" -> {13.3, 1}, "ID" -> 3177141473586702735, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NominalVector", "Weight" -> 4|>|>|>], 
+                    MachineLearning`MLProcessor[
+                    "NumericalizeNominalVector", <|
+                    "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NominalVector", "Weight" -> 4, 
+                    "SetSize" -> {1, 1, 1, 1}|>|>, 
+                    "Boundaries" -> {{-0.5, 0.5}, {-0.5, 0.5}, {-0.5, 
+                    0.5}, {-0.5, 0.5}}, "Version" -> {13.3, 1}, "ID" -> 
+                    3027595671603041304, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>|>]}, 
+                    "Invertibility" -> "Approximate", "StructurePreserving" -> 
+                    True, "Missing" -> "Allowed"|>], "PerformanceGoal" -> 
+                 "DirectTraining", "BatchProcessing" -> Automatic, 
+                 "Model" -> <|
+                  "RotationMatrix" -> {{-0.21898108237762248`, \
+-0.2743187474495141}, {-0.18617933716439622`, 
+                    0.7580700502394601}, {-0.5588142335926177, \
+-0.5249735922808973}, {0.777888933144087, -0.27291344989824523`}}, 
+                   "Precisions" -> {7.1105362804287395`, 11.144082257998438`},
+                    "NoisePrecision" -> 23.123563608900085`, "Processor" -> 
+                   MachineLearning`MLProcessor[
+                    "Center", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, 
+                    "Mean" -> {-0.059781594516515324`, \
+-0.040257835350756464`, -0.10344569666587751`, 0.04011618381371644}, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, 
+                    "Version" -> {13.3, 1}, "ID" -> 8369777599441395449|>], 
+                   "PostProcessor" -> 
+                   MachineLearning`MLProcessor[
+                    "FirstValues", <|
+                    "Info" -> <|"Type" -> "NumericalVector", "Weight" -> 4|>, 
+                    "Key" -> "(f1f2f3f4)", "Invertibility" -> "Perfect", 
+                    "StructurePreserving" -> False, "Missing" -> "Allowed"|>],
+                    "Method" -> "Multinormal", 
+                   "Options" -> <|
+                    "CovarianceType" -> <|
+                    "Value" -> "Full", "Options" -> <||>|>, 
+                    "IntrinsicDimension" -> <|
+                    "Value" -> 2, "Options" -> <||>|>|>|>, 
+                 "TrainingInformation" -> <|
+                  "Configurations" -> 
+                   Dataset[<|<|
+                    "Value" -> "Multinormal", 
+                    "Options" -> <|
+                    "CovarianceType" -> <|"Value" -> "Full"|>, 
+                    "IntrinsicDimension" -> <|"Value" -> "Heuristic"|>|>, 
+                    "NaiveImputer" -> 
+                    MachineLearning`MLProcessor[
+                    "ImputeMissing", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Imputed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, 
+                    "Mean" -> {-0.059781594516515324`, \
+-0.040257835350756485`, -0.10344569666587752`, 0.040116183813716434`}, 
+                    "StandardDeviation" -> {0.2526288580000952, 
+                    0.2706074805894266, 0.27570503799902674`, 
+                    0.3221784206238284}, "Method" -> "NaiveSampler", 
+                    "VectorLength" -> 4, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, "Type" -> 
+                    "NumericalVector", "Version" -> {13.3, 1}, "ID" -> 
+                    2682206923706569514|>], "EMIterations" -> 1|> -> <||>|>, 
+                    TypeSystem`Assoc[
+                    
+                    TypeSystem`Struct[{
+                    "Value", "Options", "NaiveImputer", "EMIterations"}, {
+                    TypeSystem`Atom[String], 
+                    TypeSystem`Assoc[
+                    TypeSystem`Atom[String], 
+                    TypeSystem`Struct[{"Value"}, {
+                    TypeSystem`Atom[String]}], 2], TypeSystem`AnyType, 
+                    TypeSystem`Atom[Integer]}], 
+                    TypeSystem`Assoc[
+                    TypeSystem`UnknownType, TypeSystem`UnknownType, 
+                    TypeSystem`AnyLength], 1], <||>], "BestModelInformation" -> 
+                   Dataset[<|
+                    "Configuration" -> {
+                    "Multinormal", "CovarianceType" -> "Full", 
+                    "IntrinsicDimension" -> "Heuristic"}, "ModelUtility" -> 
+                    Missing[]|>, 
+                    TypeSystem`Struct[{"Configuration", "ModelUtility"}, {
+                    TypeSystem`Tuple[{
+                    TypeSystem`Atom[String], TypeSystem`AnyType, 
+                    TypeSystem`AnyType}], TypeSystem`UnknownType}], <||>]|>, 
+                 "NaiveImputer" -> 
+                 MachineLearning`MLProcessor[
+                  "ImputeMissing", <|
+                   "Invertibility" -> "Perfect", "Missing" -> "Imputed", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, 
+                    "Mean" -> {-0.059781594516515324`, \
+-0.040257835350756485`, -0.10344569666587752`, 0.040116183813716434`}, 
+                    "StandardDeviation" -> {0.2526288580000952, 
+                    0.2706074805894266, 0.27570503799902674`, 
+                    0.3221784206238284}, "Method" -> "NaiveSampler", 
+                    "VectorLength" -> 4, 
+                    "Output" -> <|
+                    "(f1f2f3f4)" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 4|>|>, "Type" -> 
+                    "NumericalVector", "Version" -> {13.3, 1}, "ID" -> 
+                    2682206923706569514|>], "InputDimension" -> 0, 
+                 "OutputDimension" -> 4, 
+                 "Log" -> <|
+                  "Example" -> 
+                   MachineLearning`MLDataset[<|
+                    "f1" -> <|
+                    "Type" -> "Nominal", "Weight" -> 1, "Values" -> {""}, 
+                    "ID" -> 6007732043557872320|>, 
+                    "f2" -> <|
+                    "Type" -> "Nominal", "Weight" -> 1, "Values" -> {""}, 
+                    "ID" -> 6186548483030456009|>, 
+                    "f3" -> <|
+                    "Type" -> "Nominal", "Weight" -> 1, "Values" -> {""}, 
+                    "ID" -> 608951336412443124|>, 
+                    "f4" -> <|
+                    "Type" -> "Nominal", "Weight" -> 1, "Values" -> {""}, 
+                    "ID" -> 6426768901522466753|>|>, <|
+                    "ExampleNumber" -> 1, "ExampleWeights" -> 1, 
+                    "LogDensityRatios" -> 0, "RawExample" -> False|>], 
+                   "TrainingTime" -> 1.4872448872691921`, "MaxTrainingMemory" -> 
+                   52399944, "DataMemory" -> 7120, "FunctionMemory" -> 52992, 
+                   "LanguageVersion" -> {13.3, 1}, "Date" -> 
+                   DateObject[{
+                    2025, 1, 26, 11, 46, 28.0723901`9.200854303088386}, 
+                    "Instant", "Gregorian", -8.], "ProcessorCount" -> 2, 
+                   "ProcessorType" -> "x86-64", "OperatingSystem" -> 
+                   "Windows", "SystemWordLength" -> 64, "Evaluations" -> {}|>,
+                  "LogPDFDistribution" -> 
+                 MachineLearning`TailedQuantileDistribution[<|
+                   "Quantiles" -> {-0.3439247597861903, -0.3439247597861903, \
+-0.2327543837388873, -0.20115911789840654`, -0.1662984471274397, \
+-0.15612325916352618`, -0.04254423842936843, -0.009770673272401383, 
+                    0.0254930385395328, 0.1123635348083728, 
+                    0.15604581628193825`}, 
+                    "LeftBoundary" -> -0.2327543837388873, "LeftScale" -> 
+                    0.055585188023651505`, "LeftTailNorm" -> 0.2|>], 
+                 "Entropy" -> Around[0.3434689959145504, 0.2025406930337186], 
+                 "EntropySampleSize" -> 10|>], 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+              "EvaluationStrategy" -> "ModeFinding", "Version" -> {13.3, 1}, 
+              "ID" -> 2380392758548921658|>], 
+            MachineLearning`MLProcessor[
+            "Threads", <|
+             "Input" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, "Processors" -> {
+                MachineLearning`MLProcessor[
+                "ToLowerCase", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 1997285593760380316, 
+                  "Output" -> <|
+                   "f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "ToLowerCase", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 4016269253500607215, 
+                  "Output" -> <|
+                   "f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "ToLowerCase", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 7961450774071893912, 
+                  "Output" -> <|
+                   "f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "ToLowerCase", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 3313445236425087760, 
+                  "Output" -> <|
+                   "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>]}, 
+              "Invertibility" -> "Approximate", "StructurePreserving" -> True,
+               "Missing" -> "Allowed"|>], 
+            MachineLearning`MLProcessor[
+            "Threads", <|
+             "Input" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, "Processors" -> {
+                MachineLearning`MLProcessor[
+                "RemoveDiacritics", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 8457924698075636633, 
+                  "Output" -> <|
+                   "f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "RemoveDiacritics", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 3895671225894332751, 
+                  "Output" -> <|
+                   "f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "RemoveDiacritics", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 8149743755665056517, 
+                  "Output" -> <|
+                   "f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>], 
+                MachineLearning`MLProcessor[
+                "RemoveDiacritics", <|
+                 "Invertibility" -> "Approximate", "Missing" -> "Allowed", 
+                  "StructurePreserving" -> True, 
+                  "Input" -> <|"f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Version" -> {13.3, 1}, "ID" -> 3041367257869158142, 
+                  "Output" -> <|
+                   "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>|>]}, 
+              "Invertibility" -> "Approximate", "StructurePreserving" -> True,
+               "Missing" -> "Allowed"|>], 
+            MachineLearning`MLProcessor[
+            "Threads", <|
+             "Input" -> <|
+               "f1" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "Text", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+              "Processors" -> {
+                MachineLearning`MLProcessor[
+                "Sequence", <|
+                 "Input" -> <|"f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Output" -> <|
+                   "f1" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+                  "Processors" -> {
+                    MachineLearning`MLProcessor[
+                    "TextToNominalSequence", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Forbidden", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f1" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Tokens" -> {{
+                    " ", "\n", "\t", "\:f39f", ",", ".", "!", "?", "\"", "'", 
+                    "(", ")", "$", "%", "&", "@", "*", "-", "+", "[", "]", 
+                    "{", "}", "|", "\\", ">", "/", "~", "`", "#", "^"}, {
+                    ":)", ":-)", ":D", ":-D", ";)", ";-)", "<3", ":p", ":-p", 
+                    ":P", ":-P", ":(", ":-(", "=(", ":/", ":-/", "</3"}, {
+                    "=", "<", ";", ":"}}, "Method" -> "WordSegment", 
+                    "Version" -> {13.3, 1}, "ID" -> 2803162885757544733, 
+                    "Output" -> <|
+                    "f1" -> <|
+                    "Type" -> "NominalSequence", "Weight" -> 1|>|>|>], 
+                    MachineLearning`MLProcessor[
+                    "NominalSequenceToTFIDFVector", <|
+                    "Invertibility" -> "Impossible", "Missing" -> "Forbidden",
+                     "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f1" -> <|"Type" -> "NominalSequence", "Weight" -> 1|>|>, 
+                    "Index" -> 
+                    MachineLearning`SortedHashAssociation[<|
+                    "KeyHashes" -> {-9041259370651550285, \
+-6771218828016364596, -6288733815137217190, -5900137721653868194, \
+-5889969932445203495, -3868194375132873753, -3687836539849731292, \
+-3305415910811087369, -3054194120909200080, -2293378674594988342, \
+-2159536488856785732, -1902487705348996871, 447778850707476247, 
+                    1350868116919799734, 1368206661893747417, 
+                    1506003184266675607, 1595192803361424702, 
+                    2284352354672382645, 3287432777910049379, 
+                    4013345992487679536, 4079822118099335584, 
+                    4483413613067293384, 5046205244270268825, 
+                    5615048212113898948, 9102422861376318254}, "Values" -> 
+                    None, "DefaultValue" -> -1, "HashFunction" -> 
+                    Function[{
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$}, 
+                    Switch[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, {
+                    BlankSequence[String]}, 
+                    Data`StringHash[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    1]& ], MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    2]& ], 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 2^32], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^32], 2^16], 
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    MachineLearning`PackageScope`ToPackedArray[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q], {1, 3, 2}]; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q, 1]]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[List], 
+                    Map[Switch[#, 
+                    Blank[String], 
+                    Data`StringHash[#, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], Developer`MachineIntegerQ], #, {
+                    PatternTest[
+                    BlankSequence[], Developer`MachineIntegerQ]}, 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[#, 2^48], 
+                    Quotient[
+                    Mod[#, 2^48], 2^32], 
+                    Quotient[
+                    Mod[#, 2^32], 2^16], 
+                    Mod[#, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = 
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[], 
+                    Data`StringHash[
+                    ToString[#, InputForm] <> "Cn.i9)P$", "Murmur3-64"]]& , 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$]]], "Version" -> {13.3, 1}|>], 
+                    "InverseDocumentFrequency" -> {2.0794415416798357`, 
+                    2.772588722239781, 2.0794415416798357`, 
+                    0.6931471805599453, 1.1631508098056809`, 
+                    1.3862943611198906`, 0.9808292530117262, 
+                    1.3862943611198906`, 2.0794415416798357`, 
+                    0.4700036292457356, 2.0794415416798357`, 
+                    2.772588722239781, 1.6739764335716716`, 2.772588722239781,
+                     2.0794415416798357`, 2.772588722239781, 
+                    2.772588722239781, 1.6739764335716716`, 
+                    0.13353139262452263`, 2.772588722239781, 
+                    2.772588722239781, 1.3862943611198906`, 
+                    1.3862943611198906`, 2.772588722239781, 
+                    2.772588722239781}, "Version" -> {13.3, 1}, "ID" -> 
+                    720842611465566923, 
+                    "Output" -> <|
+                    "f1" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 1|>|>|>]}, 
+                  "Invertibility" -> "Impossible", "StructurePreserving" -> 
+                  True, "Missing" -> "Forbidden"|>], 
+                MachineLearning`MLProcessor[
+                "Sequence", <|
+                 "Input" -> <|"f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Output" -> <|
+                   "f2" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+                  "Processors" -> {
+                    MachineLearning`MLProcessor[
+                    "TextToNominalSequence", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Forbidden", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f2" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Tokens" -> {{
+                    " ", "\n", "\t", "\:f39f", ",", ".", "!", "?", "\"", "'", 
+                    "(", ")", "$", "%", "&", "@", "*", "-", "+", "[", "]", 
+                    "{", "}", "|", "\\", ">", "/", "~", "`", "#", "^"}, {
+                    ":)", ":-)", ":D", ":-D", ";)", ";-)", "<3", ":p", ":-p", 
+                    ":P", ":-P", ":(", ":-(", "=(", ":/", ":-/", "</3"}, {
+                    "=", "<", ";", ":"}}, "Method" -> "WordSegment", 
+                    "Version" -> {13.3, 1}, "ID" -> 7707447629584475897, 
+                    "Output" -> <|
+                    "f2" -> <|
+                    "Type" -> "NominalSequence", "Weight" -> 1|>|>|>], 
+                    MachineLearning`MLProcessor[
+                    "NominalSequenceToTFIDFVector", <|
+                    "Invertibility" -> "Impossible", "Missing" -> "Forbidden",
+                     "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f2" -> <|"Type" -> "NominalSequence", "Weight" -> 1|>|>, 
+                    "Index" -> 
+                    MachineLearning`SortedHashAssociation[<|
+                    "KeyHashes" -> {-8908307360497801853, \
+-7708693875827255502, -5120712676262026557, -3110043784415284327, \
+-1642114071274701721, -1349076375695737274, -6821586173379198, 
+                    447778850707476247, 926978905862050244, 
+                    1200534569874720161, 1470472588966625886, 
+                    1923688033034363476, 2010398256003047645, 
+                    2653989226505230433, 3287432777910049379, 
+                    8166699072716281789, 8666562264289531249, 
+                    9081666388223978805}, "Values" -> None, 
+                    "DefaultValue" -> -1, "HashFunction" -> 
+                    Function[{
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$}, 
+                    Switch[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, {
+                    BlankSequence[String]}, 
+                    Data`StringHash[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    1]& ], MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    2]& ], 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 2^32], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^32], 2^16], 
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    MachineLearning`PackageScope`ToPackedArray[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q], {1, 3, 2}]; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q, 1]]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[List], 
+                    Map[Switch[#, 
+                    Blank[String], 
+                    Data`StringHash[#, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], Developer`MachineIntegerQ], #, {
+                    PatternTest[
+                    BlankSequence[], Developer`MachineIntegerQ]}, 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[#, 2^48], 
+                    Quotient[
+                    Mod[#, 2^48], 2^32], 
+                    Quotient[
+                    Mod[#, 2^32], 2^16], 
+                    Mod[#, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = 
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[], 
+                    Data`StringHash[
+                    ToString[#, InputForm] <> "Cn.i9)P$", "Murmur3-64"]]& , 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$]]], "Version" -> {13.3, 1}|>], 
+                    "InverseDocumentFrequency" -> {2.0794415416798357`, 
+                    2.772588722239781, 2.0794415416798357`, 2.772588722239781,
+                     2.772588722239781, 2.0794415416798357`, 
+                    2.772588722239781, 1.6739764335716716`, 2.772588722239781,
+                     2.0794415416798357`, 2.772588722239781, 
+                    2.772588722239781, 1.1631508098056809`, 
+                    0.8266785731844679, 0.4700036292457356, 2.772588722239781,
+                     2.772588722239781, 0.8266785731844679}, 
+                    "Version" -> {13.3, 1}, "ID" -> 8965149599632767469, 
+                    "Output" -> <|
+                    "f2" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 1|>|>|>]}, 
+                  "Invertibility" -> "Impossible", "StructurePreserving" -> 
+                  True, "Missing" -> "Forbidden"|>], 
+                MachineLearning`MLProcessor[
+                "Sequence", <|
+                 "Input" -> <|"f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Output" -> <|
+                   "f3" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+                  "Processors" -> {
+                    MachineLearning`MLProcessor[
+                    "TextToNominalSequence", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Forbidden", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f3" -> <|"Type" -> "Text", "Weight" -> 1|>|>, "Method" -> 
+                    "ToCharacterCode", "Version" -> {13.3, 1}, "ID" -> 
+                    1886234551684806082, 
+                    "Output" -> <|
+                    "f3" -> <|
+                    "Type" -> "NominalSequence", "Weight" -> 1|>|>|>], 
+                    MachineLearning`MLProcessor[
+                    "NominalSequenceToTFIDFVector", <|
+                    "Invertibility" -> "Impossible", "Missing" -> "Forbidden",
+                     "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f3" -> <|"Type" -> "NominalSequence", "Weight" -> 1|>|>, 
+                    "Index" -> 
+                    MachineLearning`SortedHashAssociation[<|
+                    "KeyHashes" -> {33, 98, 99, 100, 101, 102, 103, 104, 105, 
+                    106, 107, 109, 110, 111, 112, 113, 115, 116, 117, 118, 
+                    119, 120, 122}, "Values" -> None, "DefaultValue" -> -1, 
+                    "HashFunction" -> 
+                    Function[{
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$}, 
+                    Switch[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, {
+                    BlankSequence[String]}, 
+                    Data`StringHash[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    1]& ], MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    2]& ], 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 2^32], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^32], 2^16], 
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    MachineLearning`PackageScope`ToPackedArray[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q], {1, 3, 2}]; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q, 1]]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[List], 
+                    Map[Switch[#, 
+                    Blank[String], 
+                    Data`StringHash[#, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], Developer`MachineIntegerQ], #, {
+                    PatternTest[
+                    BlankSequence[], Developer`MachineIntegerQ]}, 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[#, 2^48], 
+                    Quotient[
+                    Mod[#, 2^48], 2^32], 
+                    Quotient[
+                    Mod[#, 2^32], 2^16], 
+                    Mod[#, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = 
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[], 
+                    Data`StringHash[
+                    ToString[#, InputForm] <> "Cn.i9)P$", "Murmur3-64"]]& , 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$]]], "Version" -> {13.3, 1}|>], 
+                    "InverseDocumentFrequency" -> {1.3862943611198906`, 
+                    0.13353139262452263`, 2.0794415416798357`, 
+                    2.772588722239781, 1.6739764335716716`, 
+                    0.3746934494414107, 2.772588722239781, 0.8266785731844679,
+                     2.772588722239781, 0.9808292530117262, 
+                    2.0794415416798357`, 2.772588722239781, 
+                    1.1631508098056809`, 0.13353139262452263`, 
+                    2.0794415416798357`, 1.1631508098056809`, 
+                    0.5753641449035618, 0.9808292530117262, 
+                    1.3862943611198906`, 1.3862943611198906`, 
+                    2.772588722239781, 2.772588722239781, 
+                    1.3862943611198906`}, "Version" -> {13.3, 1}, "ID" -> 
+                    4312973263694507626, 
+                    "Output" -> <|
+                    "f3" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 1|>|>|>]}, 
+                  "Invertibility" -> "Impossible", "StructurePreserving" -> 
+                  True, "Missing" -> "Forbidden"|>], 
+                MachineLearning`MLProcessor[
+                "Sequence", <|
+                 "Input" -> <|"f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                  "Output" -> <|
+                   "f4" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+                  "Processors" -> {
+                    MachineLearning`MLProcessor[
+                    "TextToNominalSequence", <|
+                    "Invertibility" -> "Perfect", "Missing" -> "Forbidden", 
+                    "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f4" -> <|"Type" -> "Text", "Weight" -> 1|>|>, 
+                    "Tokens" -> {{
+                    " ", "\n", "\t", "\:f39f", ",", ".", "!", "?", "\"", "'", 
+                    "(", ")", "$", "%", "&", "@", "*", "-", "+", "[", "]", 
+                    "{", "}", "|", "\\", ">", "/", "~", "`", "#", "^"}, {
+                    ":)", ":-)", ":D", ":-D", ";)", ";-)", "<3", ":p", ":-p", 
+                    ":P", ":-P", ":(", ":-(", "=(", ":/", ":-/", "</3"}, {
+                    "=", "<", ";", ":"}}, "Method" -> "WordSegment", 
+                    "Version" -> {13.3, 1}, "ID" -> 5409960576032680916, 
+                    "Output" -> <|
+                    "f4" -> <|
+                    "Type" -> "NominalSequence", "Weight" -> 1|>|>|>], 
+                    MachineLearning`MLProcessor[
+                    "NominalSequenceToTFIDFVector", <|
+                    "Invertibility" -> "Impossible", "Missing" -> "Forbidden",
+                     "StructurePreserving" -> True, 
+                    "Input" -> <|
+                    "f4" -> <|"Type" -> "NominalSequence", "Weight" -> 1|>|>, 
+                    "Index" -> 
+                    MachineLearning`SortedHashAssociation[<|
+                    "KeyHashes" -> {-6420848189094925875, \
+-5975358318277304433, -5900137721653868194, -5300234332335288932, \
+-5246212602297871468, -4889713372351882290, -4067078328206404485, \
+-3807325744275703089, -3716827935804459568, -3210570732471467106, \
+-3153201054609782028, -1424236264978144290, -547725897179133175, \
+-17758852174004284, 38371346390752821, 298158812916300822, 447778850707476247,
+                     1143168251762708768, 1200534569874720161, 
+                    1503806733532514723, 1671416204203290022, 
+                    2001654405541659228, 2998854757271058743, 
+                    3059840347779341432, 3287432777910049379, 
+                    5070765454536077049, 5984498309104264371, 
+                    6249779899930135045, 8473060755860785063, 
+                    9202880099197351565}, "Values" -> None, 
+                    "DefaultValue" -> -1, "HashFunction" -> 
+                    Function[{
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$}, 
+                    Switch[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, {
+                    BlankSequence[String]}, 
+                    Data`StringHash[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    1]& ], MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 
+                    PatternTest[
+                    Blank[], 
+                    MachineLearning`PackageScope`PackedArrayQ[#, Integer, 
+                    2]& ], 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^48], 2^32], 
+                    Quotient[
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^32], 2^16], 
+                    Mod[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    MachineLearning`PackageScope`ToPackedArray[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q], {1, 3, 2}]; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = Transpose[
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q, 1]]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[List], 
+                    Map[Switch[#, 
+                    Blank[String], 
+                    Data`StringHash[#, "Murmur3-64"], 
+                    PatternTest[
+                    Blank[], Developer`MachineIntegerQ], #, {
+                    PatternTest[
+                    BlankSequence[], Developer`MachineIntegerQ]}, 
+                    
+                    Block[{MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q}, 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = {
+                    Quotient[#, 2^48], 
+                    Quotient[
+                    Mod[#, 2^48], 2^32], 
+                    Quotient[
+                    Mod[#, 2^32], 2^16], 
+                    Mod[#, 2^16]}; 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q = 
+                    Flatten[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]; Data`StringHash[
+                    FromCharacterCode[
+                    Abs[
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`q]], "Murmur3-64"]], 
+                    Blank[], 
+                    Data`StringHash[
+                    ToString[#, InputForm] <> "Cn.i9)P$", "Murmur3-64"]]& , 
+                    MachineLearning`file163SortedHashAssociation`\
+PackagePrivate`keys$]]], "Version" -> {13.3, 1}|>], 
+                    "InverseDocumentFrequency" -> {2.772588722239781, 
+                    2.772588722239781, 2.772588722239781, 2.772588722239781, 
+                    0.2876820724517809, 0.5753641449035618, 
+                    2.0794415416798357`, 2.772588722239781, 2.772588722239781,
+                     2.772588722239781, 2.0794415416798357`, 
+                    2.772588722239781, 1.6739764335716716`, 
+                    0.6931471805599453, 2.772588722239781, 
+                    1.6739764335716716`, 0.2876820724517809, 
+                    2.772588722239781, 1.6739764335716716`, 
+                    2.0794415416798357`, 0.8266785731844679, 
+                    2.0794415416798357`, 2.772588722239781, 2.772588722239781,
+                     0., 0.2876820724517809, 1.3862943611198906`, 
+                    2.0794415416798357`, 1.6739764335716716`, 
+                    0.6931471805599453}, "Version" -> {13.3, 1}, "ID" -> 
+                    9127183015186871256, 
+                    "Output" -> <|
+                    "f4" -> <|
+                    "Type" -> "NumericalVector", "Weight" -> 1|>|>|>]}, 
+                  "Invertibility" -> "Impossible", "StructurePreserving" -> 
+                  True, "Missing" -> "Forbidden"|>]}, "Invertibility" -> 
+              "Impossible", "StructurePreserving" -> True, "Missing" -> 
+              "Forbidden"|>], 
+            MachineLearning`MLProcessor[
+            "MergeVectors", <|
+             "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+              "StructurePreserving" -> True, 
+              "Input" -> <|
+               "f1" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f2" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f3" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>, 
+                "f4" -> <|"Type" -> "NumericalVector", "Weight" -> 1|>|>, 
+              "Spans" -> {
+                Span[1, 25], 
+                Span[26, 43], 
+                Span[44, 66], 
+                Span[67, 96]}, 
+              "Wrappers" -> {
+               SparseArray, SparseArray, SparseArray, SparseArray}, 
+              "Output" -> <|"(f1f2f3f4)" -> <|"Weight" -> CompressedData["
+1:eJxTTMoPSmVkYGBIAOJqkXXuD6uW2A91WuZ4IRCtGTR0iiJ35AmnZUOOFgSD
+hSOGBgDkjQf+
+                   "], "Type" -> "NumericalVector"|>|>, 
+              "Version" -> {13.3, 1}, "ID" -> 2424190413613363688|>]}, 
+          "Invertibility" -> "Impossible", "StructurePreserving" -> True, 
+          "Missing" -> "Imputed"|>]|>, 
+     "Output" -> <|
+      "Preprocessor" -> 
+       MachineLearning`MLProcessor[
+        "ToMLDataset", <|
+         "Input" -> <|"f1" -> <|"Type" -> "Nominal"|>|>, 
+          "Output" -> <|"f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+          "Preprocessor" -> 
+          MachineLearning`MLProcessor["Sequence", <|"Processors" -> {
+               MachineLearning`MLProcessor["List"], 
+               MachineLearning`MLProcessor[
+               "WrapMLDataset", <|
+                "FeatureTypes" -> {"Nominal"}, "FeatureKeys" -> {"f1"}, 
+                 "FeatureWeights" -> Automatic, "ExampleWeights" -> Automatic,
+                  "RawExample" -> Missing["KeyAbsent", "RawExample"], 
+                 "StructurePreserving" -> False|>]}|>], "ScalarFeature" -> 
+          True, "Invertibility" -> "Perfect", "StructurePreserving" -> False, 
+          "Missing" -> "Allowed"|>], "Processor" -> 
+       MachineLearning`MLProcessor[
+        "Sequence", <|
+         "Input" -> <|"f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+          "Output" -> <|"f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+          "Processors" -> {
+            MachineLearning`MLProcessor[
+            "ToVector", <|
+             "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+              "StructurePreserving" -> True, 
+              "Input" -> <|"f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "NominalVector", "Weight" -> 1|>|>, 
+              "Version" -> {13.3, 1}, "ID" -> 755841747130935910|>], 
+            MachineLearning`MLProcessor[
+            "IntegerEncodeNominalVector", <|
+             "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+              "StructurePreserving" -> True, 
+              "Input" -> <|
+               "f1" -> <|"Type" -> "NominalVector", "Weight" -> 1|>|>, 
+              "Index" -> {<|"No War" -> 1, "War" -> 2|>}, "MissingCode" -> 0, 
+              "Version" -> {13.3, 1}, "ID" -> 9098125575538928229, 
+              "Output" -> <|
+               "f1" -> <|"Type" -> "NominalVector", "Weight" -> 1|>|>|>], 
+            MachineLearning`MLProcessor[
+            "FromVector", <|
+             "Invertibility" -> "Perfect", "Missing" -> "Allowed", 
+              "StructurePreserving" -> True, 
+              "Input" -> <|
+               "f1" -> <|
+                 "Type" -> "NominalVector", "Weight" -> 1, 
+                  "SetSize" -> {2}|>|>, 
+              "Output" -> <|"f1" -> <|"Type" -> "Nominal", "Weight" -> 1|>|>, 
+              "Version" -> {13.3, 1}, "ID" -> 6210011336399180916|>], 
+            MachineLearning`MLProcessor[
+            "FirstValues", <|
+             "Info" -> <|"Type" -> "Nominal", "Weight" -> 1, "SetSize" -> 2|>,
+               "Key" -> "f1", "Invertibility" -> "Perfect", 
+              "StructurePreserving" -> False, "Missing" -> "Allowed"|>]}, 
+          "Invertibility" -> "Perfect", "StructurePreserving" -> False, 
+          "Missing" -> "Allowed"|>], "ProbabilityPostprocessor" -> Identity, 
+       "Name" -> "class", 
+       "Marginal" -> <|
+        "No War" -> 0.2777777777777778, "War" -> 0.7222222222222222|>|>, 
+     "LabelSplitter" -> 
+     MachineLearning`MLProcessor[
+      "FeatureLabelSplit", <|
+       "Processor" -> MachineLearning`MLProcessor["ListSplit"], 
+        "PreferLabeled" -> True, "KeepLabelsFormat" -> False|>], 
+     "RecalibrationFunction" -> None, "ImputationStrategy" -> Automatic, 
+     "Prior" -> Automatic, "Utility" -> 
+     SparseArray[
+      Automatic, {2, 3}, 0., {1, {{0, 1, 2}, {{2}, {3}}}, {1., 1.}}], 
+     "Threshold" -> 0, "TieBreaker" -> RandomChoice, "PerformanceGoal" -> 
+     Automatic, "BatchProcessing" -> Automatic, 
+     "Model" -> <|
+      "LogProbabilitiesFunction" -> 
+       LinearLayer[<|
+         "Type" -> "Linear", "Arrays" -> <|"Weights" -> CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIRiBOAOLrG8IB9
+1719Z7+w7Le637+H69iS/W9v9uwX2bfmgH8j9wHDB1P3O7aw7QfJ/5r7c98L
+JpYD767zOoL4T1XvOYDYs4NPHbjDqg3md+zI2JfawedwrS7PoXTXHnsQ/0Vk
+7/67fK0HcrkjDhhZv9gvX/JjX1ZI/AGQ2MQP8/d7OP7dJ6hTduDmgVsOIDmR
+H+8criw/dMAoZjlYLUjP3VOzHf7M7XL4HVm535a7fL97yoIDilXNDkLF/vYg
+9rHOp2D3uabdsH84v+2A4mmv/QevvdqfXxC/T2S3qIPpH8YDLxdkHrj1/5n9
+0znWjoyHt9k/Xf7Ynq9rzr6UB7/3r3M8vJ91V7kDiH5XvNZh4ySL/R0qD/e/
+jLm5/4GB6z6Q2IMTgvsKr3y0A7H934ockOCN2/+tsHD/Ox9GO2MVIbAZX8I+
+gvUc1PxtD6JBakEYGNQMa66E7+M7Ome/2PEcB4c+QYdteXwHADUj2j0=
+             "], "Biases" -> RawArray["Real32",{-6.744647026062012}]|>, 
+          "Parameters" -> <|
+           "OutputDimensions" -> {1}, "$OutputSize" -> 1, "$InputSize" -> 96, 
+            "$InputDimensions" -> {96}|>, 
+          "Inputs" -> <|
+           "Input" -> NeuralNetworks`TensorT[{96}, NeuralNetworks`AtomT]|>, 
+          "Outputs" -> <|
+           "Output" -> 
+            NeuralNetworks`TensorT[{1}, NeuralNetworks`RealT]|>|>, <|
+         "Version" -> "13.3.0", "Unstable" -> False|>], "Processor" -> 
+       MachineLearning`MLProcessor[
+        "FirstValues", <|"Info" -> <|"Weight" -> CompressedData["
+1:eJxTTMoPSmVkYGBIZICBC/Zq+yM+dasuHvL08UIZIFo9aGj+M1uZi98uGXJ0
+ORjMHzE0AKHwZzE=
+             "], "Type" -> "NumericalVector"|>, "Key" -> "(f1f2f3f4)", 
+          "Invertibility" -> "Perfect", "StructurePreserving" -> False, 
+          "Missing" -> "Allowed"|>], "Calibrator" -> None, "Method" -> 
+       "LogisticRegression", "PostProcessor" -> 
+       MachineLearning`MLProcessor["Identity"], 
+       "Options" -> <|
+        "L1Regularization" -> <|"Value" -> 0, "Options" -> <||>|>, 
+         "L2Regularization" -> <|"Value" -> 0.00001, "Options" -> <||>|>, 
+         "OptimizationMethod" -> <|"Value" -> "LBFGS", "Options" -> <||>|>, 
+         MaxIterations -> <|"Value" -> 30, "Options" -> <||>|>|>|>, 
+     "TrainingInformation" -> <|
+      "Reporting" -> None, "TrainingFunction" -> Classify, "EMIterations" -> 
+       Missing["KeyAbsent", "EMIterations"], "ProcessorEntropyShift" -> 0, 
+       "PreprocessingTime" -> 9.5146503`8.429937824419456, "LossName" -> 
+       "MeanCrossEntropy", "BestModelInformation" -> 
+       Dataset[<|
+         "MeanCrossEntropy" -> 
+          Around[0.16448846221417307`, 0.10974283860276675`], "Accuracy" -> 
+          Around[0.8884651503005766, 0.11790982332031077`], "EvaluationTime" -> 
+          0.00043983244458615253`, "TestSize" -> 3., "ModelMemory" -> 11920., 
+          "ModelUtility" -> 0.9864156071118101, "Round" -> 1, "Iteration" -> 
+          11, "Time" -> {
+           10.5781347`8.47595408643931, 11.1088856`8.497215487896316}, 
+          "TrainingSize" -> 13, "TrainingTime" -> 0.19360288924599056`, 
+          "TrainingMemory" -> 165773.3333333333, "ExperimentCount" -> 2, 
+          "MeanCrossEntropyHistory" -> {
+            Around[0.18104734213163184`, 0.15073065054429657`], 
+            Around[0.14792958229671432`, 0.15626477751730486`]}, 
+          "AccuracyHistory" -> {
+            Around[0.8884651503005766, 0.16674967127659895`], 
+            Around[0.8884651503005766, 0.16674967127659895`]}, 
+          "IterationHistory" -> {7, 11}, 
+          "TimeHistory" -> {{
+            10.437212`8.470129498415277, 10.4838864`8.47206729992158}, {
+            10.5781347`8.47595408643931, 11.1088856`8.497215487896316}}, 
+          "Configuration" -> {
+           "LogisticRegression", "L1Regularization" -> 0, "L2Regularization" -> 
+            0.00001, "OptimizationMethod" -> Automatic, MaxIterations -> 30}, 
+          "FinalTrainingSize" -> 16|>, 
+         TypeSystem`Assoc[
+          TypeSystem`Atom[String], TypeSystem`AnyType, 19], <||>], 
+       "Configurations" -> 
+       Dataset[<|<|
+           "Value" -> "NaiveBayes", 
+            "Options" -> <|"SmoothingParameter" -> <|"Value" -> 0.2|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.14880774820173906`, 0.22068676893049358`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.008372954771698598, "TestSize" -> 3, 
+               "ModelMemory" -> 87880, "ModelUtility" -> 0.7387489495975933, 
+               "Round" -> 1, "Iteration" -> 1, 
+               "Time" -> {
+                10.0933001`8.455578179642943, 10.2031767`8.460280401384312}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.07943282347242814, 
+               "TrainingMemory" -> 305384, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.14880774820173906`, 0.1560491108289007]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {1}, 
+               "TimeHistory" -> {{
+                 10.0933001`8.455578179642943, 
+                  10.2031767`8.460280401384312}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.008372954771698598, "MeanCrossEntropy" -> 
+              Around[0.14880774820173906`, 0.22068676893049358`], 
+              "ModelMemory" -> 87880, "TrainingMemory" -> 305384, 
+              "TrainingTime" -> 0.09214207522801664|>, "Index" -> 1|>, <|
+           "Value" -> "GradientBoostedTrees", 
+            "Options" -> <|
+             "BoostingMethod" -> <|"Value" -> "Gradient"|>, 
+              MaxTrainingRounds -> <|"Value" -> 50|>, 
+              "LeavesNumber" -> <|"Value" -> 60|>, 
+              "LearningRate" -> <|"Value" -> 0.04|>, 
+              ValidationSet -> <|"Value" -> Automatic|>, 
+              "MaxBinNumber" -> <|"Value" -> 255|>, 
+              "ThreadNumber" -> <|"Value" -> 2|>, 
+              "MaxDepth" -> <|"Value" -> 6|>, "LeafSize" -> <|"Value" -> 35|>,
+               "FeatureFraction" -> <|"Value" -> 1|>, 
+              "BaggingFraction" -> <|"Value" -> 1|>, 
+              "BaggingFrequency" -> <|"Value" -> 0|>, 
+              "MinGainToSplit" -> <|"Value" -> 0|>, 
+              "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 0|>, 
+              "LossFunction" -> <|"Value" -> Automatic|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.42350414666288366`, 0.13904626046346003`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.0016706241120909063`, "TestSize" -> 3, 
+               "ModelMemory" -> 25784, "ModelUtility" -> 0.05043863262781523, 
+               "Round" -> 1, "Iteration" -> 2, 
+               "Time" -> {
+                10.2031767`8.460280401384312, 10.2490143`8.462227092579875}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.03162277660168379, 
+               "TrainingMemory" -> 119232, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.42350414666288366`, 0.09832055367234352]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {2}, 
+               "TimeHistory" -> {{
+                 10.2031767`8.460280401384312, 
+                  10.2490143`8.462227092579875}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.0016706241120909063`, "MeanCrossEntropy" -> 
+              Around[0.42350414666288366`, 0.13904626046346003`], 
+              "ModelMemory" -> 25784, "TrainingMemory" -> 119232, 
+              "TrainingTime" -> 0.0366824208579532|>, "Index" -> 2|>, <|
+           "Value" -> "DecisionTree", 
+            "Options" -> <|
+             "DistributionSmoothing" -> <|"Value" -> 1|>, 
+              "FeatureFraction" -> <|"Value" -> 1|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.22673094831226537`, 0.19411427916922674`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.00013270239018449897`, "TestSize" -> 3, 
+               "ModelMemory" -> 8888, "ModelUtility" -> 0.6326933949494709, 
+               "Round" -> 1, "Iteration" -> 3, 
+               "Time" -> {
+                10.2490143`8.462227092579875, 10.2963799`8.464229551618203}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.05011872336272722, 
+               "TrainingMemory" -> 1086744, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.22673094831226537`, 0.1372595231256988]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {3}, 
+               "TimeHistory" -> {{
+                 10.2490143`8.462227092579875, 
+                  10.2963799`8.464229551618203}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00013270239018449897`, "MeanCrossEntropy" -> 
+              Around[0.22673094831226537`, 0.19411427916922674`], 
+              "ModelMemory" -> 8888, "TrainingMemory" -> 1086744, 
+              "TrainingTime" -> 0.058137719100763575`|>, "Index" -> 3|>, <|
+           "Value" -> "RandomForest", 
+            "Options" -> <|
+             "FeatureFraction" -> <|"Value" -> Automatic|>, 
+              "LeafSize" -> <|"Value" -> Automatic|>, 
+              "TreeNumber" -> <|"Value" -> Automatic|>, 
+              "DistributionSmoothing" -> <|"Value" -> 0.5|>, 
+              "Implementation" -> <|"Value" -> Automatic|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.5073795303958734, 0.13239868617698128`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.0013270239018449896`, "TestSize" -> 3, 
+               "ModelMemory" -> 102840, 
+               "ModelUtility" -> -0.09456684366640022, "Round" -> 1, 
+               "Iteration" -> 4, 
+               "Time" -> {
+                10.312005`8.4648881084185, 10.3901289`8.468165928946455}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.07943282347242814, 
+               "TrainingMemory" -> 281984, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.5073795303958734, 0.09362000881593308]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {4}, 
+               "TimeHistory" -> {{
+                 10.312005`8.4648881084185, 10.3901289`8.468165928946455}}|>},
+             "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.0013270239018449896`, "MeanCrossEntropy" -> 
+              Around[0.5073795303958734, 0.13239868617698128`], "ModelMemory" -> 
+              102840, "TrainingMemory" -> 281984, "TrainingTime" -> 
+              0.09214207522801664|>, "Index" -> 4|>, <|
+           "Value" -> "NearestNeighbors", 
+            "Options" -> <|
+             "NeighborsNumber" -> <|"Value" -> Automatic|>, 
+              "DistributionSmoothing" -> <|"Value" -> 0.5|>, 
+              "NearestMethod" -> <|"Value" -> Automatic|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.324670523842156, 0.1751612478311419], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.00016706241120909064`, "TestSize" -> 3, 
+               "ModelMemory" -> 19576, "ModelUtility" -> 0.32922779434829463`,
+                "Round" -> 1, "Iteration" -> 5, 
+               "Time" -> {
+                10.3901289`8.468165928946455, 10.4057552`8.468818598206118}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.007943282347242814, 
+               "TrainingMemory" -> 108408, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.324670523842156, 0.12385770614249786`]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {5}, 
+               "TimeHistory" -> {{
+                 10.3901289`8.468165928946455, 
+                  10.4057552`8.468818598206118}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00016706241120909064`, "MeanCrossEntropy" -> 
+              Around[0.324670523842156, 0.1751612478311419], "ModelMemory" -> 
+              19576, "TrainingMemory" -> 108408, "TrainingTime" -> 
+              0.009214207522801663|>, "Index" -> 5|>, <|
+           "Value" -> "LogisticRegression", 
+            "Options" -> <|
+             "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 100000.|>, 
+              "OptimizationMethod" -> <|"Value" -> Automatic|>, 
+              MaxIterations -> <|"Value" -> 30|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.6675466465095509, 0.12431181939781842`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.0006650874383229596, "TestSize" -> 3, 
+               "ModelMemory" -> 11920, "ModelUtility" -> -0.3256679136623445, 
+               "Round" -> 1, "Iteration" -> 6, 
+               "Time" -> {
+                10.4057552`8.468818598206118, 10.437212`8.470129498415277}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.01995262314968879, 
+               "TrainingMemory" -> 312656, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.6675466465095509, 0.0879017304778348]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {6}, 
+               "TimeHistory" -> {{
+                 10.4057552`8.468818598206118, 
+                  10.437212`8.470129498415277}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.0006650874383229596, "MeanCrossEntropy" -> 
+              Around[0.6675466465095509, 0.12431181939781842`], "ModelMemory" -> 
+              11920, "TrainingMemory" -> 312656, "TrainingTime" -> 
+              0.023145042853638994`|>, "Index" -> 6|>, <|
+           "Value" -> "LogisticRegression", 
+            "Options" -> <|
+             "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 0.001|>, 
+              "OptimizationMethod" -> <|"Value" -> Automatic|>, 
+              MaxIterations -> <|"Value" -> 30|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.21302814111821863`, 0.21236118957989614`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.00016706241120909064`, "TestSize" -> 3, 
+               "ModelMemory" -> 11920, "ModelUtility" -> 0.6712855277090062, 
+               "Round" -> 1, "Iteration" -> 9, 
+               "Time" -> {
+                10.5151353`8.473359858693808, 10.5463887`8.474648767238447}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.03981071705534971, 
+               "TrainingMemory" -> 169328, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.21302814111821863`, 0.15016203721278654`]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {9}, 
+               "TimeHistory" -> {{
+                 10.5151353`8.473359858693808, 
+                  10.5463887`8.474648767238447}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00016706241120909064`, "MeanCrossEntropy" -> 
+              Around[0.21302814111821863`, 0.21236118957989614`], 
+              "ModelMemory" -> 11920, "TrainingMemory" -> 169328, 
+              "TrainingTime" -> 0.04618043178420567|>, "Index" -> 7|>, <|
+           "Value" -> "LogisticRegression", 
+            "Options" -> <|
+             "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 1000.|>, 
+              "OptimizationMethod" -> <|"Value" -> Automatic|>, 
+              MaxIterations -> <|"Value" -> 30|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.6651618906293626, 0.12405851643003057`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.00016706241120909064`, "TestSize" -> 3, 
+               "ModelMemory" -> 11920, "ModelUtility" -> -0.3221439063196696, 
+               "Round" -> 1, "Iteration" -> 10, 
+               "Time" -> {
+                10.5615395`8.47527222112782, 10.5781347`8.47595408643931}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.015848931924611134`, 
+               "TrainingMemory" -> 114920, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.6651618906293626, 0.08772261823161734]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {10}, 
+               "TimeHistory" -> {{
+                 10.5615395`8.47527222112782, 
+                  10.5781347`8.47595408643931}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00016706241120909064`, "MeanCrossEntropy" -> 
+              Around[0.6651618906293626, 0.12405851643003057`], "ModelMemory" -> 
+              11920, "TrainingMemory" -> 114920, "TrainingTime" -> 
+              0.018384761032548914`|>, "Index" -> 8|>, <|
+           "Value" -> "LogisticRegression", 
+            "Options" -> <|
+             "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 0.00001|>, 
+              "OptimizationMethod" -> <|"Value" -> Automatic|>, 
+              MaxIterations -> <|"Value" -> 30|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.16448846221417307`, 0.10974283860276675`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.11790982332031077`], 
+               "EvaluationTime" -> 0.00043983244458615253`, "TestSize" -> 3., 
+               "ModelMemory" -> 11920., "ModelUtility" -> 0.9864156071118101, 
+               "Round" -> 1, "Iteration" -> 11, 
+               "Time" -> {
+                10.5781347`8.47595408643931, 11.1088856`8.497215487896316}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.19360288924599056`, 
+               "TrainingMemory" -> 165773.3333333333, "ExperimentCount" -> 2, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.18104734213163184`, 0.15073065054429657`], 
+                 Around[0.14792958229671432`, 0.15626477751730486`]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`], 
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {7, 11}, 
+               "TimeHistory" -> {{
+                 10.437212`8.470129498415277, 10.4838864`8.47206729992158}, {
+                 10.5781347`8.47595408643931, 
+                  11.1088856`8.497215487896316}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00043983244458615253`, "MeanCrossEntropy" -> 
+              Around[0.16448846221417307`, 0.10974283860276675`], 
+              "ModelMemory" -> 11920., "TrainingMemory" -> 165773.3333333333, 
+              "TrainingTime" -> 0.22457935152534905`|>, "Index" -> 9|>, <|
+           "Value" -> "LogisticRegression", 
+            "Options" -> <|
+             "L1Regularization" -> <|"Value" -> 0|>, 
+              "L2Regularization" -> <|"Value" -> 100.|>, 
+              "OptimizationMethod" -> <|"Value" -> Automatic|>, 
+              MaxIterations -> <|"Value" -> 30|>|>|> -> <|
+           "Experiments" -> {<|
+              "MeanCrossEntropy" -> 
+               Around[0.6452321377714579, 0.12232782628096643`], "Accuracy" -> 
+               Around[0.8884651503005766, 0.23581964664062158`], 
+               "EvaluationTime" -> 0.00013270239018449897`, "TestSize" -> 3, 
+               "ModelMemory" -> 11920, 
+               "ModelUtility" -> -0.29231696584594724`, "Round" -> 1, 
+               "Iteration" -> 8, 
+               "Time" -> {
+                10.4838864`8.47206729992158, 10.4995208`8.472714471740687}, 
+               "TrainingSize" -> 13, "TrainingTime" -> 0.015848931924611134`, 
+               "TrainingMemory" -> 125720, "ExperimentCount" -> 1, 
+               "MeanCrossEntropyHistory" -> {
+                 Around[0.6452321377714579, 0.08649883549108132]}, 
+               "AccuracyHistory" -> {
+                 Around[0.8884651503005766, 0.16674967127659895`]}, 
+               "IterationHistory" -> {8}, 
+               "TimeHistory" -> {{
+                 10.4838864`8.47206729992158, 
+                  10.4995208`8.472714471740687}}|>}, 
+            "PredictedPerformances" -> <|
+             "EvaluationTime" -> 0.00013270239018449897`, "MeanCrossEntropy" -> 
+              Around[0.6452321377714579, 0.12232782628096643`], "ModelMemory" -> 
+              11920, "TrainingMemory" -> 125720, "TrainingTime" -> 
+              0.018384761032548914`|>, "Index" -> 10|>|>, 
+         TypeSystem`Assoc[
+          TypeSystem`Struct[{"Value", "Options"}, {
+            TypeSystem`Atom[
+             TypeSystem`Enumeration[
+             "DecisionTree", "GradientBoostedTrees", "LogisticRegression", 
+              "NaiveBayes", "NearestNeighbors", "RandomForest"]], 
+            TypeSystem`Assoc[TypeSystem`AnyType, 
+             TypeSystem`Struct[{"Value"}, {TypeSystem`AnyType}], 
+             TypeSystem`AnyLength]}], 
+          
+          TypeSystem`Struct[{
+           "Experiments", "PredictedPerformances", "Index"}, {
+            TypeSystem`Vector[
+             
+             TypeSystem`Struct[{
+              "MeanCrossEntropy", "Accuracy", "EvaluationTime", "TestSize", 
+               "ModelMemory", "ModelUtility", "Round", "Iteration", "Time", 
+               "TrainingSize", "TrainingTime", "TrainingMemory", 
+               "ExperimentCount", "MeanCrossEntropyHistory", 
+               "AccuracyHistory", "IterationHistory", "TimeHistory"}, {
+              TypeSystem`AnyType, TypeSystem`AnyType, 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Integer], 
+               TypeSystem`Atom[Integer], 
+               TypeSystem`Vector[
+                TypeSystem`Atom[Real], 2], 
+               TypeSystem`Atom[Integer], 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Real], 
+               TypeSystem`Atom[Integer], 
+               TypeSystem`Vector[TypeSystem`AnyType, TypeSystem`AnyLength], 
+               TypeSystem`Vector[TypeSystem`AnyType, TypeSystem`AnyLength], 
+               TypeSystem`Vector[
+                TypeSystem`Atom[Integer], TypeSystem`AnyLength], 
+               TypeSystem`Vector[
+                TypeSystem`Vector[
+                 TypeSystem`Atom[Real], 2], TypeSystem`AnyLength]}], 1], 
+            
+            TypeSystem`Struct[{
+             "EvaluationTime", "MeanCrossEntropy", "ModelMemory", 
+              "TrainingMemory", "TrainingTime"}, {
+              TypeSystem`Atom[Real], TypeSystem`AnyType, 
+              TypeSystem`Atom[Real], 
+              TypeSystem`Atom[Real], 
+              TypeSystem`Atom[Real]}], 
+            TypeSystem`Atom[Integer]}], 10], <||>], "TrainingSizes" -> {13}, 
+       "MaxTrainingSize" -> 16, "PreprocessorEvaluationTime" -> 
+       6.754961175233165*^-6, "PreprocessorMemory" -> 199592, 
+       "InputDimension" -> 96, "OutputDimension" -> 1, 
+       "BaselineLogProbability" -> -0.5908422462755826, "VariableBudget" -> 
+       True, "CheckpointingInfo" -> <|"Checkpointing" -> False|>, "UserStop" -> 
+       False, "NaturalStop" -> True, "AbortStop" -> False, 
+       "RoundPartitioning" -> 
+       Dataset[{<|
+          "TrainingSizes" -> 13, "TimeBudgets" -> 1.90293006, "ElapsedTimes" -> 
+           2.3603009999999998`, "ExperimentCounts" -> 11|>}, 
+         TypeSystem`Vector[
+          
+          TypeSystem`Struct[{
+           "TrainingSizes", "TimeBudgets", "ElapsedTimes", 
+            "ExperimentCounts"}, {
+            TypeSystem`Atom[Integer], 
+            TypeSystem`Atom[Real], 
+            TypeSystem`Atom[Real], 
+            TypeSystem`Atom[Integer]}], 1], <||>]|>, "AnomalyDetector" -> 
+     None, "Log" -> <|
+      "Example" -> 
+       MachineLearning`MLDataset[<|
+         "f1" -> <|
+           "Type" -> "Text", "Weight" -> 1, "Values" -> {"Mid-20th century"}, 
+            "ID" -> 4704346431881554517|>, 
+          "f2" -> <|
+           "Type" -> "Text", "Weight" -> 1, 
+            "Values" -> {"Soviet Union, France, UK"}, "ID" -> 
+            5332985503389154930|>, 
+          "f3" -> <|
+           "Type" -> "Text", "Weight" -> 1, "Values" -> {"Germany"}, "ID" -> 
+            7534203532090717485|>, 
+          "f4" -> <|
+           "Type" -> "Text", "Weight" -> 1, 
+            "Values" -> {"Land and sea power in Europe"}, "ID" -> 
+            7221086661663568921|>|>, <|
+         "ExampleNumber" -> 1, "ExampleWeights" -> 1, "LogDensityRatios" -> 0,
+           "RawExample" -> False|>], "TrainingTime" -> 5.056063270611209, 
+       "MaxTrainingMemory" -> 84023744, "DataMemory" -> 5840, 
+       "FunctionMemory" -> 345432, "LanguageVersion" -> {13.3, 1}, "Date" -> 
+       DateObject[{2025, 1, 26, 11, 46, 31.4791505`9.250597908530523}, 
+         "Instant", "Gregorian", -8.], "ProcessorCount" -> 2, "ProcessorType" -> 
+       "x86-64", "OperatingSystem" -> "Windows", "SystemWordLength" -> 64, 
+       "Evaluations" -> {}|>|>]]]], "Output",
+ CellChangeTimes->{
+  3.86788917678429*^9, 3.868158679269348*^9, 3.868159097464676*^9, 
+   3.8681601401327972`*^9, 3.868161741256116*^9, 3.8681669998990273`*^9, 
+   3.868250755363812*^9, 3.8682608544247293`*^9, 3.8682612814644184`*^9, 
+   3.8682694859926047`*^9, 3.8686645785768394`*^9, {3.868674252803939*^9, 
+   3.868674254647626*^9}, 3.8688741676794586`*^9, 3.8688747980034313`*^9, 
+   3.869010540161727*^9, 3.869220949509454*^9, 3.869221619552075*^9, 
+   3.8692256324843674`*^9, 3.885949033172211*^9, 3.9469095923697324`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"bfcb2bd2-e7bd-43c6-8c9a-a6d6fa292d8e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2000s-2010s\>\"", ",", "\"\<USA\>\"", ",", " ", 
+     "\"\<Rest of the world\>\"", ",", 
+     "\"\<Negative inflation risk premium on the USD\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8552083739593697`*^9, 3.855208378177972*^9}, {
+  3.8552086445912375`*^9, 3.8552086449349785`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"08301fd3-fadd-41eb-86a3-b4d070c9dd9b"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.855208378771696*^9, {3.8552084256763153`*^9, 3.8552084409726586`*^9}, 
+   3.855208597592866*^9, 3.8552086457786927`*^9, 3.867235053069359*^9, 
+   3.867282613488596*^9, {3.867319311300239*^9, 3.867319312735136*^9}, 
+   3.867322148175367*^9, {3.8673237504925537`*^9, 3.8673237590011206`*^9}, {
+   3.867391564793314*^9, 3.8673915662594824`*^9}, 3.867453474802726*^9, 
+   3.8678891820497303`*^9, 3.8682612815548954`*^9, 3.868874807353445*^9, 
+   3.8859490335738745`*^9, 3.9469095934000173`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"aeeb4ac9-fcb7-430f-93bc-f6349b427770"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<China\>\"", 
+     ",", "\"\<Asian rivalry\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8507200285326214`*^9, 3.850720031715027*^9}, {
+  3.8552077666269565`*^9, 3.855207767923793*^9}, {3.8552085664220805`*^9, 
+  3.8552085671876793`*^9}, {3.855208652497233*^9, 3.855208652887829*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"ea57b08b-8cd5-4ba9-bd3c-dc8615edea52"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.8507200327758293`*^9, 3.850720654352326*^9, 3.850729324799534*^9, 
+   3.8508126631691465`*^9, 3.850972183097415*^9, 3.851681380831463*^9, 
+   3.851681460252963*^9, 3.854714488985341*^9, 3.855207384141827*^9, 
+   3.855207415437614*^9, 3.855207480341607*^9, 3.8552076364611793`*^9, 
+   3.8552077686737614`*^9, 3.85520838225595*^9, {3.8552084296917996`*^9, 
+   3.855208443331953*^9}, 3.855208601139617*^9, 3.855208653465925*^9, 
+   3.8672350558771176`*^9, 3.8672826168791*^9, {3.867319311532008*^9, 
+   3.8673193157278233`*^9}, 3.8673221512663307`*^9, 3.8673237738049297`*^9, 
+   3.8673915772429852`*^9, 3.8674534854430256`*^9, 3.8682612816151524`*^9, 
+   3.8688748090645256`*^9, 3.8859490336290946`*^9, 3.946909593447873*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"8a170d06-be5b-4296-a57e-54682bf754a6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<Pakistan\>\"",
+      ",", "\"\<Sibling rivalry\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867290691622258*^9, 3.86729070564713*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"03d95bc0-87a4-437f-a64a-cf7db605c9b2"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867290718531124*^9, 3.867290729405914*^9}, 
+   3.867319317702089*^9, 3.8673221530901885`*^9, 3.8673237753781886`*^9, 
+   3.8673915791795964`*^9, 3.8674534868648596`*^9, 3.8682612816653476`*^9, 
+   3.8688748102456665`*^9, 3.885949033684085*^9, 3.9469095935103755`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"01982528-9431-470a-9834-60ba1d7bfb0a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2020s-2030s\>\"", ",", "\"\<Germany\>\"", ",", " ", "\"\<France\>\"",
+      ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673194116018667`*^9, 3.867319422417197*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"0df5df88-228d-4c29-9e8c-ea15046f6b6c"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8673194268143578`*^9, 3.867322155635699*^9, 
+  3.867323778333378*^9, 3.867391581301222*^9, 3.8674534887241745`*^9, 
+  3.868261281723587*^9, 3.868874811865758*^9, 3.8859490337390785`*^9, 
+  3.9469095935885277`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"550f24ba-411a-43db-946d-c24368566d6b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Sweden\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868269501835806*^9, 3.8682695312722845`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"8e28672a-671f-489d-8f15-1a43b60e24eb"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8682695176789885`*^9, 3.8682695323503494`*^9}, 
+   3.868269619208349*^9, 3.868874813755426*^9, 3.885949033794081*^9, 
+   3.946909593635364*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"095234d0-348a-4d2d-ba3f-083a584a59ae"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Ukraine\>\"", ",", 
+     "\"\<Gas logistics\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.850720015740599*^9, 3.8507200163646*^9}, {
+  3.850729307233903*^9, 3.850729307327503*^9}, {3.850972135213337*^9, 
+  3.8509721654153805`*^9}, {3.851681331632463*^9, 3.851681366277463*^9}, {
+  3.8552086489973536`*^9, 3.8552086493567133`*^9}, {3.8673237601511054`*^9, 
+  3.8673237612855244`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"cc96e3f8-1395-4649-b86a-135f49dd6e74"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.850720017222602*^9, 3.8507206520683203`*^9, {3.8507293143631153`*^9, 
+   3.850729324705934*^9}, 3.8508126558191366`*^9, {3.8509721585833693`*^9, 
+   3.850972170907398*^9}, 3.851681371203463*^9, 3.851681458840963*^9, 
+   3.854714487067737*^9, 3.8552074141251597`*^9, 3.8552074789822793`*^9, 
+   3.855207635336218*^9, 3.855207765611368*^9, {3.85520836970951*^9, 
+   3.855208380834124*^9}, {3.8552084275043783`*^9, 3.855208442097619*^9}, 
+   3.85520859988966*^9, 3.855208649950423*^9, 3.867235054551402*^9, 
+   3.8672826152385345`*^9, {3.8673193114473705`*^9, 3.867319314308324*^9}, 
+   3.8673221497212467`*^9, {3.8673237522128515`*^9, 3.8673237620878286`*^9}, 
+   3.8673915677010126`*^9, 3.867453474943348*^9, 3.8682612817758217`*^9, 
+   3.8688748153129864`*^9, 3.885949033844067*^9, 3.9469095936817656`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"3d47928e-5996-47f3-862f-9020943e32a2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", "\"\<Russia\>\"",
+      ",", "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867322196123098*^9, 3.8673221990910597`*^9}, {
+  3.8673222310506506`*^9, 3.8673222823309937`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"dc93cea2-7b79-4176-8eff-0ef13e9cf3fc"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.867322284942938*^9, {3.867323753685707*^9, 3.8673237635918536`*^9}, 
+   3.8673915692363815`*^9, 3.867453475037094*^9, 3.8682612818360667`*^9, 
+   3.8688748176663485`*^9, 3.8859490339090576`*^9, 3.9469095937281494`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"de9901a2-be41-4de1-8340-918ad02faa7c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Germany\>\"", ",", 
+     "\"\<Extreme distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.86826117895216*^9, 3.8682611814371796`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"97df786b-eecc-4d9e-b27e-e73a7fcfa5eb"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682611839131594`*^9, 3.868261281896287*^9, 
+  3.8688748191079974`*^9, 3.885949033969059*^9, 3.9469095937755017`*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"7c594ca7-c42f-4395-95a1-3a1e644c6c30"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Norway\>\"", ",", " ", "\"\<Ukraine\>\"", ",", 
+     "\"\<Revenge for Norwegian killing of a Ukrainian diplomat\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8686645832983866`*^9, 3.8686646060017924`*^9}, {
+  3.868874820790597*^9, 3.868874822517729*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"ea1982ce-f657-4e87-b8b3-638e96e3533d"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8686646074371614`*^9, 3.8688748232196894`*^9, 
+  3.8859490340390463`*^9, 3.946909593823348*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"3d63b3c2-109d-4593-ad8d-1b3be5225c43"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<Germany\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Revenge for Norwegian killing of a German diplomat\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8690105576726494`*^9, 3.8690105708317523`*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"6771d6b6-9bdb-4523-977e-e310dd220f72"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8690105725365334`*^9, 3.8859490341040387`*^9, 
+  3.946909593884873*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"729cbfc2-e7b8-4e33-bcc6-a16d333bb072"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<India\>\"", ",", " ", "\"\<Norway\>\"", ",", 
+     "\"\<Divine Indian retribution on the demoniac Norwegians\>\""}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868664630134009*^9, 3.8686646410966983`*^9}, {
+  3.868664674394912*^9, 3.8686647059180107`*^9}, {3.8686652332412896`*^9, 
+  3.868665240060974*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"f87c4242-72c8-47ab-bf3a-924c325148c2"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8686646464188137`*^9, 3.86866471019949*^9, 
+  3.8688748256575975`*^9, 3.88594903416504*^9, 3.9469095939317636`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"301d25d8-184b-4795-ac7c-7d7bc9540a63"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2022\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", 
+     "\"\<Denmark and Norway\>\"", ",", 
+     "\"\<Premeptive nuclear strike on money-laundered USD reserves held by \
+Nordic nations\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8686645832983866`*^9, 3.8686646060017924`*^9}, {
+  3.868874196882659*^9, 3.8688744535138254`*^9}, {3.868874530224264*^9, 
+  3.8688746104217725`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"5d0d8b63-ce23-4cb4-9c88-388b3cb69a0d"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.868874220131826*^9, 3.8688742794109783`*^9}, {
+   3.868874314237869*^9, 3.8688744544200172`*^9}, {3.8688745323835506`*^9, 
+   3.868874615806051*^9}, 3.868874830624895*^9, 3.8859490342290397`*^9, 
+   3.9469095939781346`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"77fe82aa-6f10-4638-bcbc-1365311db711"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", "\"\<India\>\"", 
+     ",", "\"\<Treason by certain Indian politicians\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867322196123098*^9, 3.8673221990910597`*^9}, {
+  3.8673222310506506`*^9, 3.8673222823309937`*^9}, {3.8673224715365725`*^9, 
+  3.8673224927670226`*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"cb4cd827-a352-486c-a2e6-29e5b8a5ff91"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{
+  3.867322284942938*^9, {3.8673224991415143`*^9, 3.867322505544325*^9}, 
+   3.8673237657824545`*^9, 3.8673915715271883`*^9, 3.8674534781307497`*^9, 
+   3.8682612819565268`*^9, 3.8688748331944757`*^9, 3.885949034373723*^9, 
+   3.946909594041615*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"f7d9c129-ab97-4e5d-ae67-b907239f4337"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Saudi Arabia\>\"", 
+     ",", "\"\<Shortage of Saudi oil\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673237100262046`*^9, 3.867323740260728*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"b32596a8-f916-4b10-9318-11e86cc5b0d1"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8673237428370347`*^9, 3.8673237675405436`*^9}, 
+   3.8673915737176495`*^9, 3.8674534806306725`*^9, 3.86826128201677*^9, 
+   3.8688748346139765`*^9, 3.885949034443736*^9, 3.946909594088004*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"9e1f45ab-8737-4eac-850e-89de22dfab89"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Iran\>\"", ",", " ", "\"\<USA\>\"", ",", 
+     "\"\<Shortage of USA oil\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8673237100262046`*^9, 3.867323740260728*^9}, {
+   3.8673825178875847`*^9, 3.8673825245533595`*^9}, 3.867382555794115*^9},
+ CellLabel->"In[33]:=",ExpressionUUID->"3c7367a5-992e-4808-b2b6-85033b693925"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8673237428370347`*^9, 3.8673237675405436`*^9}, {
+   3.8673825414531784`*^9, 3.8673825577151513`*^9}, 3.86739157540022*^9, 
+   3.867453483068098*^9, 3.8681670048310575`*^9, 3.8682612820769825`*^9, 
+   3.868874836118164*^9, 3.88594903450373*^9, 3.946909594119249*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"d5ef237a-2739-413d-94b3-04b1d5188a66"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Germany\>\"", ",", 
+     "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867295453175441*^9, 3.8672954655956535`*^9}, {
+   3.8672955676399183`*^9, 3.867295569498533*^9}, 3.8688748380769143`*^9},
+ CellLabel->"In[35]:=",ExpressionUUID->"d88bb70f-5f71-497d-ac9d-0a21cf2a1b0c"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8672954712966022`*^9, 3.867295479069103*^9}, {
+   3.8672955766814685`*^9, 3.867295582685175*^9}, 3.8673193197233253`*^9, 
+   3.8673221577106934`*^9, 3.867323779890874*^9, 3.8673915841091037`*^9, 
+   3.8674534914584665`*^9, 3.86826128214522*^9, 3.8688748406843896`*^9, 
+   3.8859490345787516`*^9, 3.946909594165633*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"2d85c1b5-23d5-4d02-900a-d9cdfa6f37da"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Russia\>\"", ",", " ", "\"\<Baltic nations\>\"",
+      ",", "\"\<Unpaid Russian gas dues\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681601251177235`*^9, 3.868160129336303*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"09ec1595-7e28-4766-ab7f-3d3b754bf4ac"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8681601459763384`*^9, 3.86826128220749*^9, 
+  3.8688748435769415`*^9, 3.8859490346387634`*^9, 3.9469095941968827`*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"a7046c8e-adfd-47bb-8787-48faf0a82960"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<China\>\"", ",", " ", "\"\<Taiwan\>\"", ",", 
+     "\"\<Illegal supply of WMDs to Taiwan by the USA\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8672328921944723`*^9, 3.8672329513602705`*^9}, {
+  3.867233002900983*^9, 3.8672330047844706`*^9}},
+ CellLabel->"In[39]:=",ExpressionUUID->"34607a66-2182-4cac-a513-95d41a4fcd78"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867232935899682*^9, 3.8672329520779552`*^9}, {
+   3.8672330054396453`*^9, 3.8672330230378284`*^9}, 3.8672350573812857`*^9, 
+   3.867282618238426*^9, 3.8673193219608035`*^9, 3.8673221604156666`*^9, 
+   3.8673237820336046`*^9, 3.8673915857826586`*^9, 3.8674534933490334`*^9, 
+   3.868261282267734*^9, 3.8688748457140846`*^9, 3.885949034703761*^9, 
+   3.946909594260361*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"6bb144d2-6437-4bf3-8762-f005d06663b6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Vietnam\>\"", ",", 
+     "\"\<Vietnamese revenge for Vietnam War\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681586583951035`*^9, 3.8681587086745844`*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"9bb54b66-492e-4ce2-942a-4d9e8b65c9fd"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8681587190491915`*^9, 3.8682612823279514`*^9, 
+  3.8688748484751425`*^9, 3.885949034768779*^9, 3.946909594322398*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"2b56087c-17f9-421c-a21a-b5d439d182dc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<Iran\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8681590738480177`*^9, 3.868159086601031*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"dc0277fc-5190-48c3-9412-d16ae473e95f"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.868159088352858*^9, 3.86815909797293*^9}, 
+   3.8682612823962245`*^9, 3.8688748515461683`*^9, 3.885949034828787*^9, 
+   3.9469095944000053`*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"b4f62ebd-32c1-4406-80c6-62cc63932615"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<Iran\>\"", ",", " ", "\"\<Israel\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868250738223817*^9, 3.8682507423799*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"4067dbec-0e03-4adf-99f2-302f18debf96"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682507593949203`*^9, 3.8682612824585066`*^9, 
+  3.8688748538681836`*^9, 3.8859490348937883`*^9, 3.946909594447867*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"6c44840f-c788-4c07-950c-7b6ff65bbdae"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<United Kingdom\>\"", 
+     ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.868161628510089*^9, 3.8681616341505194`*^9}, {
+  3.8681617085541716`*^9, 3.8681617325376997`*^9}, {3.868166986249136*^9, 
+  3.8681669904080944`*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"7bc71259-71a7-44a0-b7cb-8b5a9dfa14e6"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.868161750990152*^9, 3.8681670221123085`*^9, 
+  3.8682612825187516`*^9, 3.8688748562750287`*^9, 3.885949034958798*^9, 
+  3.9469095944781446`*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"fb41a1f7-c3b0-4ffa-81a0-3978bb7d3ec4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<USA\>\"", ",", " ", "\"\<North Korea\>\"", ",", 
+     "\"\<Severe ideological differences\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.867282560303*^9, 3.867282593379941*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"cbe13878-8f94-46f1-8096-9692d024427a"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.867282595629861*^9, 3.867282620019612*^9}, 
+   3.8673193240667763`*^9, 3.867322162104197*^9, 3.867323783722783*^9, 
+   3.867391587333767*^9, 3.8674534962864428`*^9, 3.868261282609135*^9, 
+   3.868874858565897*^9, 3.8859490350188656`*^9, 3.9469095945254993`*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"5736770c-13ff-4187-b874-dc74d195b946"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2023\>\"", ",", "\"\<United Kingdom\>\"", ",", " ", 
+     "\"\<Germany\>\"", ",", "\"\<Mutual distrust\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.8682608055208178`*^9, 3.868260843074912*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"75b517c3-e3c3-45f2-9d93-2e5bcb494a55"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{3.8682608601562595`*^9, 3.868261282677425*^9, 
+  3.868874860925768*^9, 3.885949035083815*^9, 3.946909594604113*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"fa1c4d24-f040-4964-89b5-df2db695c816"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<2030s-2040s\>\"", ",", "\"\<NATO\>\"", ",", " ", "\"\<Russia\>\"", 
+     ",", "\"\<Mutual distrust\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"c", "[", "f", "]"}]}], "Input",
+ CellChangeTimes->{{3.855207322237731*^9, 3.855207389735381*^9}, {
+  3.8552074356244135`*^9, 3.8552074485927124`*^9}, {3.8552076522418785`*^9, 
+  3.855207659991609*^9}, {3.855207781470192*^9, 3.8552077889074335`*^9}, {
+  3.855208400239699*^9, 3.855208412942387*^9}, {3.8552085625159593`*^9, 
+  3.855208563234699*^9}, {3.8552086561064777`*^9, 3.855208656497096*^9}, {
+  3.867453497848895*^9, 3.867453501270672*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"d13b844a-e337-4eb9-b8b5-778c930f3356"],
+
+Cell[BoxData["\<\"War\"\>"], "Output",
+ CellChangeTimes->{{3.8552073705173006`*^9, 3.8552074490614448`*^9}, 
+   3.855207481591564*^9, {3.8552076380392494`*^9, 3.8552076626917567`*^9}, {
+   3.855207770298705*^9, 3.8552077919542027`*^9}, {3.855208384162133*^9, 
+   3.855208444644406*^9}, 3.8552086025926933`*^9, 3.8552086571064215`*^9, 
+   3.8672350586315527`*^9, 3.867282621800799*^9, 3.867319325987831*^9, 
+   3.867322164509423*^9, 3.867323785929045*^9, 3.867391589239133*^9, 
+   3.867453502551877*^9, 3.868261282739686*^9, 3.868874863611274*^9, 
+   3.8859490351488276`*^9, 3.9469095946504955`*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"ebe7ddde-b78a-49b6-8691-9282b76ca202"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindClusters", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<USA\>\"", ",", "\"\<Rest of the world\>\""}], "}"}], ",", 
+   "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8681669316226025`*^9, 3.8681669590343986`*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"60d0e70f-102f-4535-a602-ed3e2c313617"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "\<\"USA\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"Rest of the world\"\>", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8681669624992247`*^9, 3.86816751249364*^9, 
+  3.868251924500681*^9, 3.868261282978424*^9, 3.868333762221834*^9, 
+  3.8686742567725525`*^9, 3.8688748679231186`*^9, 3.885949036577342*^9, 
+  3.9469095956817417`*^9},
+ CellLabel->"Out[55]=",ExpressionUUID->"8c7bbaa5-2faf-4f8f-8d66-27c608da6dcf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindClusters", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<USA\>\"", ",", "\"\<Russia\>\"", ",", "\"\<Ukraine\>\"", ",", 
+     "\"\<United Kingdom\>\"", ",", "\"\<India\>\"", ",", "\"\<China\>\"", 
+     ",", "\"\<Saudi Arabia\>\"", ",", "\"\<Iran\>\"", ",", 
+     "\"\<Pakistan\>\"", ",", "\"\<Germany\>\"", ",", "\"\<France\>\"", ",", 
+     "\"\<Baltic nations\>\"", ",", "\"\<Taiwan\>\"", ",", "\"\<Vietnam\>\"", 
+     ",", "\"\<North Korea\>\"", ",", "\"\<NATO\>\"", ",", "\"\<Sweden\>\"", 
+     ",", "\"\<Norway\>\""}], "}"}], ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.8681669732116756`*^9, {3.8681670373233805`*^9, 3.8681672289829254`*^9}, {
+   3.8681672825743256`*^9, 3.868167292149145*^9}, {3.868167579096901*^9, 
+   3.8681675942319293`*^9}, {3.8681677258983784`*^9, 3.868167774724651*^9}, {
+   3.868167820844885*^9, 3.868167855114692*^9}, {3.868168024440517*^9, 
+   3.86816810857099*^9}, {3.868168145233909*^9, 3.8681681535335903`*^9}, {
+   3.868168448343926*^9, 3.8681684699475822`*^9}, {3.8682519497890806`*^9, 
+   3.8682519571254525`*^9}, {3.8682521267087955`*^9, 
+   3.8682521277273235`*^9}, {3.868333377321416*^9, 3.8683333857455397`*^9}, {
+   3.8692219650776997`*^9, 3.8692220094041977`*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"9f39493e-f8ba-4b65-bdc2-8ae3f62fffb6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"USA\"\>", ",", "\<\"Russia\"\>", ",", "\<\"Ukraine\"\>", 
+     ",", "\<\"United Kingdom\"\>", ",", "\<\"India\"\>", 
+     ",", "\<\"Saudi Arabia\"\>", ",", "\<\"Iran\"\>", 
+     ",", "\<\"Pakistan\"\>", ",", "\<\"Germany\"\>", 
+     ",", "\<\"Baltic nations\"\>", ",", "\<\"Taiwan\"\>", 
+     ",", "\<\"Vietnam\"\>", ",", "\<\"North Korea\"\>", ",", "\<\"NATO\"\>", 
+     ",", "\<\"Sweden\"\>", ",", "\<\"Norway\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"China\"\>", ",", "\<\"France\"\>"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.868167213450198*^9, 3.8681672559473085`*^9, 3.868167293606656*^9, 
+   3.8681675144366226`*^9, {3.8681675795761538`*^9, 3.8681675949651785`*^9}, 
+   3.8681677340418634`*^9, {3.8681678226722136`*^9, 3.8681678556317267`*^9}, 
+   3.8681680420462713`*^9, {3.8681680726532097`*^9, 3.868168109243717*^9}, {
+   3.868168146785103*^9, 3.868168154375681*^9}, 3.868168453380638*^9, 
+   3.868168546473899*^9, 3.8682519250143623`*^9, 3.8682521320790687`*^9, 
+   3.868261283141182*^9, 3.868333389809898*^9, 3.8683336609233694`*^9, 
+   3.8683337640592575`*^9, 3.8686742594443345`*^9, {3.868874868878905*^9, 
+   3.868874871742387*^9}, 3.869220952110059*^9, {3.8692219829832945`*^9, 
+   3.8692220103885365`*^9}, 3.8692267132593346`*^9, 3.885949036958311*^9, 
+   3.9023855078080206`*^9, 3.9469095960411267`*^9},
+ CellLabel->"Out[56]=",ExpressionUUID->"190c1467-f793-4344-8189-165eeb9476a4"]
+}, Open  ]]
+},
+WindowSize->{960, 414},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"fd4e201c-8b55-4572-b039-a9510b34f06c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 851, 20, 67, "Input",ExpressionUUID->"6667177e-3fdb-42d0-bb2f-5d25c9208a84"],
+Cell[CellGroupData[{
+Cell[1434, 44, 5726, 130, 466, "Input",ExpressionUUID->"01387ae7-6a34-441e-b422-327ae10a0cc7"],
+Cell[7163, 176, 92663, 1812, 327, "Output",ExpressionUUID->"bfcb2bd2-e7bd-43c6-8c9a-a6d6fa292d8e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99863, 1993, 518, 12, 48, "Input",ExpressionUUID->"08301fd3-fadd-41eb-86a3-b4d070c9dd9b"],
+Cell[100384, 2007, 631, 9, 32, "Output",ExpressionUUID->"aeeb4ac9-fcb7-430f-93bc-f6349b427770"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[101052, 2021, 567, 11, 48, "Input",ExpressionUUID->"ea57b08b-8cd5-4ba9-bd3c-dc8615edea52"],
+Cell[101622, 2034, 864, 12, 32, "Output",ExpressionUUID->"8a170d06-be5b-4296-a57e-54682bf754a6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[102523, 2051, 419, 9, 48, "Input",ExpressionUUID->"03d95bc0-87a4-437f-a64a-cf7db605c9b2"],
+Cell[102945, 2062, 407, 5, 32, "Output",ExpressionUUID->"01982528-9431-470a-9834-60ba1d7bfb0a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103389, 2072, 423, 9, 48, "Input",ExpressionUUID->"0df5df88-228d-4c29-9e8c-ea15046f6b6c"],
+Cell[103815, 2083, 352, 5, 32, "Output",ExpressionUUID->"550f24ba-411a-43db-946d-c24368566d6b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[104204, 2093, 433, 10, 48, "Input",ExpressionUUID->"8e28672a-671f-489d-8f15-1a43b60e24eb"],
+Cell[104640, 2105, 283, 4, 32, "Output",ExpressionUUID->"095234d0-348a-4d2d-ba3f-083a584a59ae"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[104960, 2114, 662, 13, 48, "Input",ExpressionUUID->"cc96e3f8-1395-4649-b86a-135f49dd6e74"],
+Cell[105625, 2129, 948, 13, 32, "Output",ExpressionUUID->"3d47928e-5996-47f3-862f-9020943e32a2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[106610, 2147, 487, 11, 48, "Input",ExpressionUUID->"dc93cea2-7b79-4176-8eff-0ef13e9cf3fc"],
+Cell[107100, 2160, 360, 5, 32, "Output",ExpressionUUID->"de9901a2-be41-4de1-8340-918ad02faa7c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[107497, 2170, 413, 9, 48, "Input",ExpressionUUID->"97df786b-eecc-4d9e-b27e-e73a7fcfa5eb"],
+Cell[107913, 2181, 256, 3, 32, "Output",ExpressionUUID->"7c594ca7-c42f-4395-95a1-3a1e644c6c30"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108206, 2189, 510, 11, 48, "Input",ExpressionUUID->"ea1982ce-f657-4e87-b8b3-638e96e3533d"],
+Cell[108719, 2202, 234, 3, 32, "Output",ExpressionUUID->"3d63b3c2-109d-4593-ad8d-1b3be5225c43"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108990, 2210, 456, 10, 48, "Input",ExpressionUUID->"6771d6b6-9bdb-4523-977e-e310dd220f72"],
+Cell[109449, 2222, 210, 3, 32, "Output",ExpressionUUID->"729cbfc2-e7b8-4e33-bcc6-a16d333bb072"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[109696, 2230, 558, 12, 48, "Input",ExpressionUUID->"f87c4242-72c8-47ab-bf3a-924c325148c2"],
+Cell[110257, 2244, 254, 3, 32, "Output",ExpressionUUID->"301d25d8-184b-4795-ac7c-7d7bc9540a63"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[110548, 2252, 612, 13, 67, "Input",ExpressionUUID->"5d0d8b63-ce23-4cb4-9c88-388b3cb69a0d"],
+Cell[111163, 2267, 363, 5, 32, "Output",ExpressionUUID->"77fe82aa-6f10-4638-bcbc-1365311db711"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111563, 2277, 553, 12, 48, "Input",ExpressionUUID->"cb4cd827-a352-486c-a2e6-29e5b8a5ff91"],
+Cell[112119, 2291, 386, 6, 32, "Output",ExpressionUUID->"f7d9c129-ab97-4e5d-ae67-b907239f4337"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112542, 2302, 427, 10, 48, "Input",ExpressionUUID->"b32596a8-f916-4b10-9318-11e86cc5b0d1"],
+Cell[112972, 2314, 332, 4, 32, "Output",ExpressionUUID->"9e1f45ab-8737-4eac-850e-89de22dfab89"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[113341, 2323, 490, 10, 48, "Input",ExpressionUUID->"3c7367a5-992e-4808-b2b6-85033b693925"],
+Cell[113834, 2335, 405, 5, 32, "Output",ExpressionUUID->"d5ef237a-2739-413d-94b3-04b1d5188a66"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114276, 2345, 503, 11, 48, "Input",ExpressionUUID->"d88bb70f-5f71-497d-ac9d-0a21cf2a1b0c"],
+Cell[114782, 2358, 458, 6, 32, "Output",ExpressionUUID->"2d85c1b5-23d5-4d02-900a-d9cdfa6f37da"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[115277, 2369, 434, 10, 48, "Input",ExpressionUUID->"09ec1595-7e28-4766-ab7f-3d3b754bf4ac"],
+Cell[115714, 2381, 257, 3, 32, "Output",ExpressionUUID->"a7046c8e-adfd-47bb-8787-48faf0a82960"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[116008, 2389, 498, 11, 48, "Input",ExpressionUUID->"34607a66-2182-4cac-a513-95d41a4fcd78"],
+Cell[116509, 2402, 511, 7, 32, "Output",ExpressionUUID->"6bb144d2-6437-4bf3-8762-f005d06663b6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117057, 2414, 437, 10, 48, "Input",ExpressionUUID->"9bb54b66-492e-4ce2-942a-4d9e8b65c9fd"],
+Cell[117497, 2426, 256, 3, 32, "Output",ExpressionUUID->"2b56087c-17f9-421c-a21a-b5d439d182dc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117790, 2434, 428, 10, 48, "Input",ExpressionUUID->"dc0277fc-5190-48c3-9412-d16ae473e95f"],
+Cell[118221, 2446, 284, 4, 32, "Output",ExpressionUUID->"b4f62ebd-32c1-4406-80c6-62cc63932615"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[118542, 2455, 427, 10, 48, "Input",ExpressionUUID->"4067dbec-0e03-4adf-99f2-302f18debf96"],
+Cell[118972, 2467, 258, 3, 32, "Output",ExpressionUUID->"6c44840f-c788-4c07-950c-7b6ff65bbdae"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119267, 2475, 524, 11, 48, "Input",ExpressionUUID->"7bc71259-71a7-44a0-b7cb-8b5a9dfa14e6"],
+Cell[119794, 2488, 283, 4, 32, "Output",ExpressionUUID->"fb41a1f7-c3b0-4ffa-81a0-3978bb7d3ec4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120114, 2497, 430, 10, 48, "Input",ExpressionUUID->"cbe13878-8f94-46f1-8096-9692d024427a"],
+Cell[120547, 2509, 401, 5, 32, "Output",ExpressionUUID->"5736770c-13ff-4187-b874-dc74d195b946"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120985, 2519, 427, 10, 48, "Input",ExpressionUUID->"75b517c3-e3c3-45f2-9d93-2e5bcb494a55"],
+Cell[121415, 2531, 252, 3, 32, "Output",ExpressionUUID->"fa1c4d24-f040-4964-89b5-df2db695c816"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121704, 2539, 767, 14, 48, "Input",ExpressionUUID->"d13b844a-e337-4eb9-b8b5-778c930f3356"],
+Cell[122474, 2555, 677, 9, 32, "Output",ExpressionUUID->"ebe7ddde-b78a-49b6-8691-9282b76ca202"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123188, 2569, 324, 7, 28, "Input",ExpressionUUID->"60d0e70f-102f-4535-a602-ed3e2c313617"],
+Cell[123515, 2578, 468, 9, 32, "Output",ExpressionUUID->"8c7bbaa5-2faf-4f8f-8d66-27c608da6dcf"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[124020, 2592, 1332, 22, 67, "Input",ExpressionUUID->"9f39493e-f8ba-4b65-bdc2-8ae3f62fffb6"],
+Cell[125355, 2616, 1503, 26, 99, "Output",ExpressionUUID->"190c1467-f793-4344-8189-165eeb9476a4"]
+}, Open  ]]
+}
+]
+*)
+
